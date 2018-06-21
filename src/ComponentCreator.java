@@ -1,12 +1,7 @@
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
-import org.apache.commons.io.IOUtils;
 
 import java.io.*;
-import java.net.URL;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class ComponentCreator {
@@ -47,8 +42,8 @@ public class ComponentCreator {
     }
 
     private void createJavascriptFile(VirtualFile componentDirectory) throws IOException {
-        String fileName = "templates/component.js";
-        VirtualFile jsFile = componentDirectory.createChildData(componentDirectory, componentName + ".js");
+        String fileName = "templates/component.vue";
+        VirtualFile jsFile = componentDirectory.createChildData(componentDirectory, componentName + ".vue");
 
         String newContent = getFileContent(fileName).replaceAll("%COMPONENT_NAME%", componentName);
         jsFile.setBinaryContent(newContent.getBytes());

@@ -41,7 +41,7 @@ public class ComponentCreatorDialog extends JDialog {
 
     }
 
-    public String getComponentName(){
+    public String getComponentName() {
         return textField1.getText();
     }
 
