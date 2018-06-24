@@ -32,6 +32,11 @@ public class ComponentCreatorAction extends AnAction {
         ApplicationManager.getApplication().runWriteAction(new RunnableCreator(targetLocation, componentName));
     }
 
+    /**
+     * Get the location from where the user wants to create the new module
+     * @param file
+     * @return
+     */
     private VirtualFile getLocation(VirtualFile file) {
         if (file.isDirectory()) {
             return file;

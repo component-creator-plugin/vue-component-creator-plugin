@@ -25,6 +25,11 @@ public class ComponentCreator {
         createCSSFile(componentDirectory);
     }
 
+    /**
+     * Get the file content
+     * @param fileName
+     * @return
+     */
     private String getFileContent(String fileName) {
         StringBuilder result = new StringBuilder("");
         ClassLoader classLoader = getClass().getClassLoader();
@@ -41,6 +46,11 @@ public class ComponentCreator {
         return result.toString();
     }
 
+    /**
+     * Create vue module
+     * @param componentDirectory
+     * @throws IOException
+     */
     private void createJavascriptFile(VirtualFile componentDirectory) throws IOException {
         String fileName = "templates/component.vue";
         VirtualFile jsFile = componentDirectory.createChildData(componentDirectory, componentName + ".vue");
@@ -49,6 +59,11 @@ public class ComponentCreator {
         jsFile.setBinaryContent(newContent.getBytes());
     }
 
+    /**
+     * Create css module
+     * @param componentDirectory
+     * @throws IOException
+     */
     private void createCSSFile(VirtualFile componentDirectory) throws IOException {
         String fileName = "templates/component.scss";
         VirtualFile cssFile = componentDirectory.createChildData(componentDirectory, "_" + componentName + ".scss");

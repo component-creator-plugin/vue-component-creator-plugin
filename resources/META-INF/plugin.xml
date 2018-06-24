@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.faebeee.vuecomponentcreator</id>
   <name>Vue Component Creator</name>
-  <version>0.3.2</version>
+  <version>0.4.0</version>
   <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabs.io</vendor>
 
   <description><![CDATA[
@@ -10,6 +10,8 @@
 
   <change-notes><![CDATA[
       <ul>
+        <li>Add Readme. Add icon</li>
+        <li>Bugfix</li>
         <li>Update description</li>
       </ul>
     ]]>
@@ -30,7 +32,10 @@
 
   <actions>
     <!-- Add your actions here -->
-    <action id="VueComponent.ComponentCreatorAction" class="ComponentCreatorAction" text="Vue Component"
+    <action id="VueComponent.ComponentCreatorAction"
+            class="ComponentCreatorAction"
+            icon="/icons/library_add.png"
+            text="Vue Module"
             description="Create Vue component">
       <add-to-group group-id="NewGroup" anchor="first"/>
     </action>
