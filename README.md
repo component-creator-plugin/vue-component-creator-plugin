@@ -24,7 +24,7 @@ File: my-module.vue
             <pre v-text="$attrs"/>
         </div>
     </template>
-    
+
     <script>
         export default {
             props: {
