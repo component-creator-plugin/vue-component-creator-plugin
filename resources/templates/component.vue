@@ -1,5 +1,6 @@
 <template>
     <div class="%COMPONENT_NAME%">
+        <pre v-text="$attrs"/>
     </div>
 </template>
 
