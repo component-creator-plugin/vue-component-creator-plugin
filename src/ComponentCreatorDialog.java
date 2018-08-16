@@ -7,6 +7,8 @@ public class ComponentCreatorDialog extends JDialog {
     private JButton buttonCancel;
     private JTextField textField1;
 
+    private boolean hasCanceled = false;
+
     public ComponentCreatorDialog() {
         setContentPane(contentPane);
         setModal(true);
@@ -45,13 +47,17 @@ public class ComponentCreatorDialog extends JDialog {
         return textField1.getText();
     }
 
+    public boolean isCanceled() {
+        return hasCanceled;
+    }
+
     private void onOK() {
-        // add your code here
+        hasCanceled = false;
         dispose();
     }
 
     private void onCancel() {
-        // add your code here if necessary
+        hasCanceled = true;
         dispose();
     }
 

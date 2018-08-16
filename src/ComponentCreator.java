@@ -25,8 +25,21 @@ public class ComponentCreator {
         createCSSFile(componentDirectory);
     }
 
+    public VirtualFile getModuleVirtualFile() {
+        return directory.findFileByRelativePath(componentName);
+    }
+
+    public VirtualFile getJsVirtualFile() {
+        return directory.findFileByRelativePath(componentName + "/" + getJsFileName());
+    }
+
+    public VirtualFile getCssVirtualFile() {
+        return directory.findFileByRelativePath(componentName + "/" + getCssFileName());
+    }
+
     /**
      * Get the file content
+     *
      * @param fileName
      * @return
      */
@@ -46,14 +59,23 @@ public class ComponentCreator {
         return result.toString();
     }
 
+    private String getCssFileName() {
+        return "_" + componentName + ".scss";
+    }
+
+    private String getJsFileName() {
+        return componentName + ".vue";
+    }
+
     /**
      * Create vue module
+     *
      * @param componentDirectory
      * @throws IOException
      */
     private void createJavascriptFile(VirtualFile componentDirectory) throws IOException {
         String fileName = "templates/component.vue";
-        VirtualFile jsFile = componentDirectory.createChildData(componentDirectory, componentName + ".vue");
+        VirtualFile jsFile = componentDirectory.createChildData(componentDirectory, getJsFileName());
 
         String newContent = getFileContent(fileName).replaceAll("%COMPONENT_NAME%", componentName);
         jsFile.setBinaryContent(newContent.getBytes());
@@ -61,12 +83,13 @@ public class ComponentCreator {
 
     /**
      * Create css module
+     *
      * @param componentDirectory
      * @throws IOException
      */
     private void createCSSFile(VirtualFile componentDirectory) throws IOException {
         String fileName = "templates/component.scss";
-        VirtualFile cssFile = componentDirectory.createChildData(componentDirectory, "_" + componentName + ".scss");
+        VirtualFile cssFile = componentDirectory.createChildData(componentDirectory, getCssFileName());
         String newContent = getFileContent(fileName).replaceAll("%COMPONENT_NAME%", componentName);
         cssFile.setBinaryContent(newContent.getBytes());
     }
