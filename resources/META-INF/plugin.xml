@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.faebeee.vuecomponentcreator</id>
   <name>Vue Component Creator</name>
-  <version>0.4.0</version>
+  <version>0.5.0</version>
   <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabs.io</vendor>
 
   <description><![CDATA[
@@ -10,9 +10,9 @@
 
   <change-notes><![CDATA[
       <ul>
-        <li>Add Readme. Add icon</li>
-        <li>Bugfix</li>
-        <li>Update description</li>
+        <li>Fix component creation if you cancel the modal</li>
+        <li>Auto open files in editor after creation</li>
+        <li>Update template</li>
       </ul>
     ]]>
   </change-notes>
