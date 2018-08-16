@@ -21,6 +21,7 @@ File: my-module.vue
 
     <template>
         <div class="my-module">
+            <pre v-text="$attrs"/>
         </div>
     </template>
 
@@ -41,12 +42,12 @@ File: _my-module.scss
 
         // Module
         & {
+            //
         }
 
         // Facets
 
         // States
-
     }
 
 
