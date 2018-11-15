@@ -1,3 +1,5 @@
+package fabs.component;
+
 import javax.swing.*;
 import java.awt.event.*;
 

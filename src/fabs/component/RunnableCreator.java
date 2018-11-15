@@ -1,3 +1,5 @@
+package fabs.component;
+
 import com.intellij.openapi.vfs.VirtualFile;
 
 import java.io.IOException;

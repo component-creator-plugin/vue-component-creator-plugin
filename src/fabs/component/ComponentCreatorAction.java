@@ -1,15 +1,15 @@
-import com.intellij.openapi.actionSystem.*;
+package fabs.component;
+
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.pom.Navigatable;
+import fabs.util.AbstractCreatorAction;
 
-import javax.xml.datatype.DatatypeConstants;
-import java.util.*;
-
-public class ComponentCreatorAction extends AnAction {
+public class ComponentCreatorAction extends AbstractCreatorAction {
 
     @Override
     public void update(AnActionEvent anActionEvent) {
@@ -41,18 +41,5 @@ public class ComponentCreatorAction extends AnAction {
 
         FileEditorManager.getInstance(e.getProject()).openFile(c.getJsVirtualFile(), true);
         FileEditorManager.getInstance(e.getProject()).openFile(c.getCssVirtualFile(), true);
-    }
-
-    /**
-     * Get the location from where the user wants to create the new module
-     *
-     * @param file
-     * @return
-     */
-    private VirtualFile getLocation(VirtualFile file) {
-        if (file.isDirectory()) {
-            return file;
-        }
-        return file.getParent();
     }
 }

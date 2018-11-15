@@ -1,44 +1,52 @@
 <idea-plugin>
-  <id>com.faebeee.vuecomponentcreator</id>
-  <name>Vue Component Creator</name>
-  <version>0.5.0</version>
-  <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabs.io</vendor>
+    <id>com.faebeee.vuecomponentcreator</id>
+    <name>Vue Component Creator</name>
+    <version>0.6.0</version>
+    <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabs.io</vendor>
 
-  <description><![CDATA[
-      Generate Single file vue component with it's css file in a folder
+    <description><![CDATA[
+      Create Single Vue component files or Vuex modules
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       <ul>
-        <li>Fix component creation if you cancel the modal</li>
+        <li>0.6.0: Add functionality to create vuex modules</li>
+        <li>0.5.0: Fix component creation if you cancel the modal</li>
         <li>Auto open files in editor after creation</li>
         <li>Update template</li>
       </ul>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="173.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products -->
-  <depends>com.intellij.modules.lang</depends>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products -->
+    <depends>com.intellij.modules.lang</depends>
 
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-    <action id="VueComponent.ComponentCreatorAction"
-            class="ComponentCreatorAction"
-            icon="/icons/library_add.png"
-            text="Vue Module"
-            description="Create Vue component">
-      <add-to-group group-id="NewGroup" anchor="first"/>
-    </action>
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+        <action id="VueComponent.ComponentCreatorAction"
+                class="fabs.component.ComponentCreatorAction"
+                icon="/icons/component/add.png"
+                text="Vue Module"
+                description="Create Vue fabs.component">
+            <add-to-group group-id="NewGroup" anchor="first"/>
+        </action>
+        <action id="VueComponent.VuexModuleCreatorAction"
+                class="fabs.vuex.VuexModuleCreatorAction"
+                icon="/icons/vuex/add.png"
+                description="Create new Vuex Module"
+                text="Vuex Module">
+            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="VueComponent.ComponentCreatorAction"/>
+        </action>
+    </actions>
 
 </idea-plugin>
