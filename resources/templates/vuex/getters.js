@@ -1,3 +1,3 @@
-export default {
-
+export function data(state) {
+    return state.data;
 }

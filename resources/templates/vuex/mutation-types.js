@@ -1,0 +1,1 @@
+export const MUTATION = '%COMPONENT_NAME%/MUTATION';
