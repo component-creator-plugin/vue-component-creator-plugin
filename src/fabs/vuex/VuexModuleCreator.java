@@ -19,6 +19,7 @@ public class VuexModuleCreator extends AbstractCreator {
     public final String indexFile = "templates/vuex/index.js";
     public final String mutationsFile = "templates/vuex/mutations.js";
     public final String stateFile = "templates/vuex/state.js";
+    public final String mutationTypesFile = "templates/vuex/mutation-types.js";
 
 
     public VuexModuleCreator(VirtualFile directory, String componentName) {
@@ -35,7 +36,7 @@ public class VuexModuleCreator extends AbstractCreator {
 
         VirtualFile componentDirectory = directory.createChildDirectory(directory, componentName);
 
-        copyAllFiles(new String[]{actionsFile, gettersFile, indexFile, mutationsFile, stateFile}, componentDirectory, componentName);
+        copyAllFiles(new String[]{actionsFile, gettersFile, indexFile, mutationsFile, stateFile, mutationTypesFile}, componentDirectory, componentName);
     }
 
     protected void copyAllFiles(String[] files, VirtualFile destinationDirectory, String componentName) throws IOException {
