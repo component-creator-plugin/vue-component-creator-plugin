@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.vuecomponentcreator</id>
     <name>Vue Component Creator</name>
-    <version>0.6.1</version>
+    <version>0.6.2</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabs.io</vendor>
 
     <description><![CDATA[
