@@ -9,6 +9,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.pom.Navigatable;
 import fabs.util.AbstractCreatorAction;
 
+import java.awt.*;
+
 public class ComponentCreatorAction extends AbstractCreatorAction {
 
     @Override
@@ -25,6 +27,13 @@ public class ComponentCreatorAction extends AbstractCreatorAction {
         ComponentCreatorDialog dialog = new ComponentCreatorDialog();
         VirtualFile selectedLocation = e.getData(CommonDataKeys.VIRTUAL_FILE);
         VirtualFile targetLocation = getLocation(selectedLocation);
+
+        final int width = dialog.getWidth();
+        final int height = dialog.getHeight();
+        final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screenSize.width / 2) - (width / 2);
+        int y = (screenSize.height / 2) - (height / 2);
+        dialog.setLocation(x, y);
 
         dialog.pack();
         dialog.setVisible(true);

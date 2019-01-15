@@ -6,6 +6,8 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import fabs.util.AbstractCreatorAction;
 
+import java.awt.*;
+
 public class VuexModuleCreatorAction extends AbstractCreatorAction {
 
     @Override
@@ -14,15 +16,35 @@ public class VuexModuleCreatorAction extends AbstractCreatorAction {
         VirtualFile selectedLocation = e.getData(CommonDataKeys.VIRTUAL_FILE);
         VirtualFile targetLocation = getLocation(selectedLocation);
 
+
+        final int width = dialog.getWidth();
+        final int height = dialog.getHeight();
+        final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screenSize.width / 2) - (width / 2);
+        int y = (screenSize.height / 2) - (height / 2);
+        dialog.setLocation(x, y);
+
+
         dialog.pack();
         dialog.setVisible(true);
 
+
         final String componentName = dialog.getComponentName();
+        String[] listOfFilesToCopy = dialog.getListOfFilesToCopy();
+        String mutationTypeFilePath = dialog.getMutationFilePathForTemplate();
 
         if (dialog.isCanceled()) {
             return;
         }
 
-        ApplicationManager.getApplication().runWriteAction(new RunnableCreator(targetLocation, componentName));
+        ApplicationManager.getApplication().runWriteAction(
+                new RunnableCreator(
+                        targetLocation,
+                        componentName,
+                        listOfFilesToCopy,
+                        mutationTypeFilePath,
+                        dialog.getMutationName()
+                )
+        );
     }
 }

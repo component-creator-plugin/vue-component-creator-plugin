@@ -1,5 +1,5 @@
-import * as types from './mutation-types';
+import {%MUTATION_NAME%} from '%MUTATION_FILE%';
 
 export function set({ commit }, { data }) {
-    commit(types.MUTATION, { data });
+    commit(%MUTATION_NAME%, { data });
 }

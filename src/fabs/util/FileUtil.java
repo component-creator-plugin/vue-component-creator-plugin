@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class FileUtil {
     public static String COMPONENT_NAME_TOKEN = "%COMPONENT_NAME%";
+    public static String MUTATION_TYPE_FILE_PATH_TOKEN = "%MUTATION_FILE%";
+    public static String MUTATION_NAME_TOKEN = "%MUTATION_NAME%";
 
     /**
      * Get the file content

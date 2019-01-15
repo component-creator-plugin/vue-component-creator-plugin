@@ -1,7 +1,7 @@
-import * as types from './mutation-types';
+import {%MUTATION_NAME%} from '%MUTATION_FILE%';
 
 export default {
-    [types.MUTATION](state, { data }) {
+    [%MUTATION_NAME%](state, { data }) {
         state.data = data;
     },
 };

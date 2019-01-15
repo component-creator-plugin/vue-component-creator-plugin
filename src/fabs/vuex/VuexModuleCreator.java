@@ -10,21 +10,22 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+
 public class VuexModuleCreator extends AbstractCreator {
 
     protected VirtualFile directory;
     protected String componentName;
-    public final String actionsFile = "templates/vuex/actions.js";
-    public final String gettersFile = "templates/vuex/getters.js";
-    public final String indexFile = "templates/vuex/index.js";
-    public final String mutationsFile = "templates/vuex/mutations.js";
-    public final String stateFile = "templates/vuex/state.js";
-    public final String mutationTypesFile = "templates/vuex/mutation-types.js";
+    protected String[] listOfFilesToCopy;
+    protected String mutationTypeFilePath;
+    protected String mutationName;
 
 
-    public VuexModuleCreator(VirtualFile directory, String componentName) {
+    public VuexModuleCreator(VirtualFile directory, String componentName, String[] listOfFilesToCopy, String mutationTypeFilePath, String mutationName) {
         this.directory = directory;
         this.componentName = componentName;
+        this.listOfFilesToCopy = listOfFilesToCopy;
+        this.mutationTypeFilePath = mutationTypeFilePath;
+        this.mutationName = mutationName;
     }
 
     @Override
@@ -36,7 +37,7 @@ public class VuexModuleCreator extends AbstractCreator {
 
         VirtualFile componentDirectory = directory.createChildDirectory(directory, componentName);
 
-        copyAllFiles(new String[]{actionsFile, gettersFile, indexFile, mutationsFile, stateFile, mutationTypesFile}, componentDirectory, componentName);
+        copyAllFiles(this.listOfFilesToCopy, componentDirectory, componentName);
     }
 
     protected void copyAllFiles(String[] files, VirtualFile destinationDirectory, String componentName) throws IOException {
@@ -49,7 +50,7 @@ public class VuexModuleCreator extends AbstractCreator {
 
 
             String fileContent = fu.getContent(sourceFile);
-            fileContent = TokenReplacer.replace(fileContent, componentName);
+            fileContent = TokenReplacer.replace(fileContent, componentName, this.mutationTypeFilePath, this.mutationName);
 
             VirtualFile file = destinationDirectory.createChildData(destinationDirectory, fileName);
             fu.writeFile(fileContent, file);
