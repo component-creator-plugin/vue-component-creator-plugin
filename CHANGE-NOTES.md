@@ -1,0 +1,5 @@
+- 1.0.0: Add UI for more customized vuex store generation
+- 0.6.0: Add functionality to create vuex modules
+- 0.5.0: Fix component creation if you cancel the modal
+- Auto open files in editor after creation
+- Update template
