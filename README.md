@@ -2,7 +2,7 @@
 An Brainstorm Plugin to create single file vue.js components with a Sass file along them.
 This plugins does a couple of things in order to simplify your dev experience.
 
-![New context menu][./doc/new.png]
+![New context menu][https://github.com/faebeee/vue-component-creator-plugin/raw/master/doc/new.png]
 
 
 ## Vue single file component
@@ -11,7 +11,7 @@ This will open a dialog to define the module's name. This name is used later
 to name the directory, vue- and sass-file as well as the sass root name, and a root node in the vue file
 with the given name.
 
-![New context menu][./doc/new-component.png]
+![New context menu][https://github.com/faebeee/vue-component-creator-plugin/raw/master/doc/new-component.png]
 
 __Example__
 
@@ -59,7 +59,7 @@ File: _my-module.scss
 
 
 ## Vuex module
-![New context menu][./doc/new-vuex.png]
+![New context menu][https://github.com/faebeee/vue-component-creator-plugin/raw/master/doc/new-vuex.png]
 
 
 By creating a new Vuex module, a couple of files will be generated.
