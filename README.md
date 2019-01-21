@@ -11,6 +11,8 @@ This will open a dialog to define the module's name. This name is used later
 to name the directory, vue- and sass-file as well as the sass root name, and a root node in the vue file
 with the given name.
 
+![New context menu][./doc/new-component.png]
+
 __Example__
 
 - my-module
@@ -92,3 +94,6 @@ in the dialog.
 __getters.js__
 Exports all the available getters. This is only created, if the `Getters File` field
 is checked.
+
+## Icons
+Icons provided by https://www.iconfinder.com/justicon via https://www.iconfinder.com
