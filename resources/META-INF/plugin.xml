@@ -42,14 +42,14 @@ This plugins does a couple of things in order to simplify your dev experience.</
         <action id="VueComponent.ComponentCreatorAction"
                 class="fabs.component.ComponentCreatorAction"
                 icon="/icons/component.png"
-                text="Vue Module"
+                text="Vue Component"
                 description="Create Vue component">
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
         <action id="VueComponent.VuexModuleCreatorAction"
                 class="fabs.vuex.VuexModuleCreatorAction"
                 icon="/icons/store.png"
-                text="Vuex module"
+                text="Vuex Module"
                 description="Create new Vuex module">
             <add-to-group group-id="NewGroup" anchor="after" relative-to-action="VueComponent.ComponentCreatorAction"/>
         </action>
