@@ -4,6 +4,10 @@ This plugins does a couple of things in order to simplify your dev experience.
 
 <img src="https://github.com/faebeee/vue-component-creator-plugin/raw/master/doc/new.png"/>
 
+# Install
+Search for `Vue Component Creator` in the plugins settings. Or download the plugin from the [release site](https://github.com/faebeee/vue-component-creator-plugin/releases)
+
+<img src="https://github.com/faebeee/vue-component-creator-plugin/raw/master/doc/install.png"/>
 
 
 ## Vue single file component
