@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.vuecomponentcreator</id>
     <name>Vue Component Creator</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <description>
@@ -14,6 +14,7 @@ This plugins does a couple of things in order to simplify your dev experience.</
 
     <change-notes><![CDATA[
       <ul>
+  <li>1.0.2: Fix typo</li>
   <li>1.0.1: Updated icons upon user request</li>
   <li>1.0.0: Add UI for more customized vuex store generation</li>
   <li>0.6.0: Add functionality to create vuex modules</li>
