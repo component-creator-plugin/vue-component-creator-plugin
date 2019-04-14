@@ -1,26 +1,30 @@
 package fabs.vuex;
 
+import org.fest.util.Maps;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class VuexCreatorDialog extends JDialog {
     private JPanel contentPane;
-    private JTextField moduleNameField;
+    private JTextField moduleNameTextField;
     private JButton btnOk;
     private JButton btnCancel;
     private JCheckBox gettersCheckBox;
     private JTextField mutationTypesTextField;
     private JLabel mutationtypeFileLabel;
     private JTextField mutationNameTextField;
+    private JTextField actionNameTextField;
 
 
-    public final String ACTION_FILE = "templates/vuex/actions.js";
-    public final String INDEX_FILE = "templates/vuex/index.js";
-    public final String GETTERS_FILE = "templates/vuex/getters.js";
-    public final String STATE_FILE = "templates/vuex/state.js";
-    public final String MUTATIONS_FILE = "templates/vuex/mutations.js";
-    public final String MUTATIONTYPES_FILE = "templates/vuex/mutation-types.js";
+    public final String ACTION_FILE = "templates/vuex/actions.js.mustache";
+    public final String INDEX_FILE = "templates/vuex/index.js.mustache";
+    public final String GETTERS_FILE = "templates/vuex/getters.js.mustache";
+    public final String STATE_FILE = "templates/vuex/state.js.mustache";
+    public final String MUTATIONS_FILE = "templates/vuex/mutations.js.mustache";
+    public final String MUTATIONTYPES_FILE = "templates/vuex/mutation-types.js.mustache";
 
     private boolean hasCanceled = false;
 
@@ -59,7 +63,7 @@ public class VuexCreatorDialog extends JDialog {
     }
 
     public String getComponentName() {
-        return moduleNameField.getText();
+        return moduleNameTextField.getText();
     }
 
     public String[] getListOfFilesToCopy() {
@@ -82,13 +86,23 @@ public class VuexCreatorDialog extends JDialog {
 
     }
 
+    public Map<String, Object> getTemplateVars(){
+         Map<String, Object> templateModel = Maps.newHashMap();
+        templateModel.put("componentName", moduleNameTextField.getText());
+        templateModel.put("mutationName", mutationNameTextField.getText());
+        templateModel.put("mutationsFile", mutationTypesTextField.getText());
+        templateModel.put("getters", gettersCheckBox.isSelected());
+        templateModel.put("actionName", actionNameTextField.getText());
+        return templateModel;
+    }
+
     public String getMutationName(){
         return mutationNameTextField.getText();
     }
 
     public String getMutationFilePathForTemplate(){
         if(mutationTypesTextField.getText().length() == 0){
-            return "./mutation-types.js";
+            return "./mutation-types.js.mustache";
         }
 
         return mutationTypesTextField.getText();

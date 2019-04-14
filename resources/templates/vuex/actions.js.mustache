@@ -1,5 +1,5 @@
-import { %MUTATION_NAME% } from '%MUTATION_FILE%';
+import {{ mutationName }} from '{{ mutationsFile }}';
 
-export function set({ commit }, { data }) {
-    commit(%MUTATION_NAME%, { data });
+export function {{ actionName }}({ commit }, { data }) {
+    commit({{ mutationName }}, { data });
 }

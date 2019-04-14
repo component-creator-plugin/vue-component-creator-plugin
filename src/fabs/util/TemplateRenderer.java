@@ -1,29 +1,25 @@
 package fabs.util;
 
-
-import org.jtwig.JtwigModel;
-import org.jtwig.JtwigTemplate;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.samskivert.mustache.Mustache;
+import com.samskivert.mustache.Template;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.Map;
 
-public class TwigRenderer {
+public class TemplateRenderer {
 
-    public JtwigModel createModel(String componentName){
-        return JtwigModel
-                .newModel()
-                .with("componentName", componentName);
+    public void createFile(File source, VirtualFile destinationFile, Map<String, Object> context) throws IOException {
+        String template = render(source, context);
+        destinationFile.setBinaryContent(template.getBytes());
     }
 
-    public void render(String sourceFile, File destinationFile, JtwigModel dataModel) throws IOException {
-        JtwigTemplate template = JtwigTemplate.classpathTemplate(sourceFile);
-
-        if (!destinationFile.exists()) {
-            destinationFile.createNewFile();
-        }
-
-        FileOutputStream fos = new FileOutputStream(destinationFile);
-        template.render(dataModel, fos);
+    public String render(File file, Map<String, Object> context) throws FileNotFoundException {
+        FileReader fileReader = new FileReader(file);
+        Template tmpl = Mustache.compiler().compile(fileReader);
+        return tmpl.execute(context);
     }
 }

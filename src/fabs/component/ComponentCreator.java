@@ -3,21 +3,24 @@ package fabs.component;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import fabs.util.AbstractCreator;
-import fabs.util.FileUtil;
+import fabs.util.TemplateRenderer;
 
+import java.io.File;
 import java.io.IOException;
-
-import static fabs.util.FileUtil.COMPONENT_NAME_TOKEN;
+import java.util.Map;
 
 public class ComponentCreator extends AbstractCreator {
     protected VirtualFile directory;
     protected String componentName;
-    private final String vueComponentFile = "templates/component/component.vue";
-    private final String cssComponentFile = "templates/component/component.scss";
+    protected Map<String, Object> templateModel;
 
-    public ComponentCreator(VirtualFile directory, String componentName) {
+    private final String vueTemplateFile = "templates/component/component.vue.mustache";
+    private final String sassTemplateFile = "templates/component/component.scss.mustache";
+
+    public ComponentCreator(VirtualFile directory, String componentName, Map<String, Object> templateModel) {
         this.directory = directory;
         this.componentName = componentName;
+        this.templateModel = templateModel;
     }
 
     public void create() throws IOException {
@@ -27,27 +30,16 @@ public class ComponentCreator extends AbstractCreator {
         }
 
         VirtualFile componentDirectory = directory.createChildDirectory(directory, componentName);
+        VirtualFile componentDestFile = componentDirectory.createChildData(componentDirectory, getJsFileName());
+        VirtualFile scssDestFile = componentDirectory.createChildData(componentDirectory, getCssFileName());
 
-        FileUtil fu = new FileUtil();
-        String jsFileContent = fu.getContent(vueComponentFile).replaceAll(COMPONENT_NAME_TOKEN, componentName);
-        VirtualFile jsFile = componentDirectory.createChildData(componentDirectory, getJsFileName());
-        fu.writeFile(jsFileContent, jsFile);
+        TemplateRenderer renderer = new TemplateRenderer();
+        File vueFile = new File(getClass().getClassLoader().getResource(vueTemplateFile).getFile());
+        File sassFile = new File(getClass().getClassLoader().getResource(sassTemplateFile).getFile());
 
-
-        String scssFileContent = fu.getContent(cssComponentFile).replaceAll(COMPONENT_NAME_TOKEN, componentName);
-        VirtualFile scssFile = componentDirectory.createChildData(componentDirectory, getCssFileName());
-        fu.writeFile(scssFileContent, scssFile);
+        renderer.createFile(vueFile, componentDestFile, templateModel);
+        renderer.createFile(sassFile, scssDestFile, templateModel);
     }
-
-
-    public VirtualFile getJsVirtualFile() {
-        return directory.findFileByRelativePath(componentName + "/" + getJsFileName());
-    }
-
-    public VirtualFile getCssVirtualFile() {
-        return directory.findFileByRelativePath(componentName + "/" + getCssFileName());
-    }
-
 
 
     private String getCssFileName() {

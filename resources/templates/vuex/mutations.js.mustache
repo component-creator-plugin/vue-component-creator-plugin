@@ -1,7 +1,7 @@
-import { %MUTATION_NAME% } from '%MUTATION_FILE%';
+import {{ mutationName }} from '{{ mutationsFile }}';
 
 export default {
-    [%MUTATION_NAME%](state, { data }) {
+    [{{ mutationName }}](state, { data }) {
         state.data = data;
     },
 };

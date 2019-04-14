@@ -24,7 +24,6 @@ public class VuexModuleCreatorAction extends AbstractCreatorAction {
         int y = (screenSize.height / 2) - (height / 2);
         dialog.setLocation(x, y);
 
-
         dialog.pack();
         dialog.setVisible(true);
 
@@ -43,7 +42,8 @@ public class VuexModuleCreatorAction extends AbstractCreatorAction {
                         componentName,
                         listOfFilesToCopy,
                         mutationTypeFilePath,
-                        dialog.getMutationName()
+                        dialog.getMutationName(),
+                        dialog.getTemplateVars()
                 )
         );
     }

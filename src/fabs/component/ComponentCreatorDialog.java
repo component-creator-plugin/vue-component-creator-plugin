@@ -1,13 +1,16 @@
 package fabs.component;
 
+import org.fest.util.Maps;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Map;
 
 public class ComponentCreatorDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTextField textField1;
+    private JTextField componentNameTextField;
 
     private boolean hasCanceled = false;
 
@@ -45,8 +48,14 @@ public class ComponentCreatorDialog extends JDialog {
 
     }
 
+    public Map<String, Object> getTemplateVars() {
+        Map<String, Object> templateModel = Maps.newHashMap();
+        templateModel.put("componentName", componentNameTextField.getText());
+        return templateModel;
+    }
+
     public String getComponentName() {
-        return textField1.getText();
+        return componentNameTextField.getText();
     }
 
     public boolean isCanceled() {

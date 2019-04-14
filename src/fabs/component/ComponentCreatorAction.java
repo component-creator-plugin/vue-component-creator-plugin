@@ -3,7 +3,6 @@ package fabs.component;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.pom.Navigatable;
@@ -20,7 +19,6 @@ public class ComponentCreatorAction extends AbstractCreatorAction {
         Navigatable navigatable = anActionEvent.getData(CommonDataKeys.NAVIGATABLE);
         anActionEvent.getPresentation().setEnabledAndVisible(project != null && navigatable != null);
     }
-
 
     @Override
     public void actionPerformed(AnActionEvent e) {
@@ -44,11 +42,8 @@ public class ComponentCreatorAction extends AbstractCreatorAction {
             return;
         }
 
-        ComponentCreator c = new ComponentCreator(targetLocation, componentName);
-
-        ApplicationManager.getApplication().runWriteAction(new RunnableCreator(targetLocation, componentName));
-
-        FileEditorManager.getInstance(e.getProject()).openFile(c.getJsVirtualFile(), true);
-        FileEditorManager.getInstance(e.getProject()).openFile(c.getCssVirtualFile(), true);
+        ApplicationManager.getApplication().runWriteAction(
+                new RunnableCreator(targetLocation, componentName, dialog.getTemplateVars())
+        );
     }
 }

@@ -3,12 +3,13 @@ package fabs.vuex;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import fabs.util.AbstractCreator;
-import fabs.util.FileUtil;
-import fabs.util.TokenReplacer;
+import fabs.util.TemplateRenderer;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 
 public class VuexModuleCreator extends AbstractCreator {
@@ -18,14 +19,23 @@ public class VuexModuleCreator extends AbstractCreator {
     protected String[] listOfFilesToCopy;
     protected String mutationTypeFilePath;
     protected String mutationName;
+    protected TemplateRenderer renderer;
+    protected Map<String, Object> templateModel;
 
 
-    public VuexModuleCreator(VirtualFile directory, String componentName, String[] listOfFilesToCopy, String mutationTypeFilePath, String mutationName) {
+    public VuexModuleCreator(VirtualFile directory,
+                             String componentName,
+                             String[] listOfFilesToCopy,
+                             String mutationTypeFilePath,
+                             String mutationName,
+                             Map<String, Object> templateModel) {
         this.directory = directory;
         this.componentName = componentName;
         this.listOfFilesToCopy = listOfFilesToCopy;
         this.mutationTypeFilePath = mutationTypeFilePath;
         this.mutationName = mutationName;
+        this.templateModel = templateModel;
+        this.renderer = new TemplateRenderer();
     }
 
     @Override
@@ -37,23 +47,19 @@ public class VuexModuleCreator extends AbstractCreator {
 
         VirtualFile componentDirectory = directory.createChildDirectory(directory, componentName);
 
-        copyAllFiles(this.listOfFilesToCopy, componentDirectory, componentName);
+        copyAllFiles(this.listOfFilesToCopy, componentDirectory);
     }
 
-    protected void copyAllFiles(String[] files, VirtualFile destinationDirectory, String componentName) throws IOException {
+    protected void copyAllFiles(String[] files, VirtualFile destinationDirectory) throws IOException {
         for (int i = 0; i < files.length; i++) {
-            String sourceFile = files[i];
+            String sourceTemplateFile = files[i];
 
-            FileUtil fu = new FileUtil();
-            Path filePath = Paths.get(sourceFile);
-            String fileName = filePath.getFileName().toString();
-
-
-            String fileContent = fu.getContent(sourceFile);
-            fileContent = TokenReplacer.replace(fileContent, componentName, this.mutationTypeFilePath, this.mutationName);
+            Path filePath = Paths.get(sourceTemplateFile);
+            String fileName = filePath.getFileName().toString().replace(".mustache", "");
+            File sourceFile = new File(getClass().getClassLoader().getResource(sourceTemplateFile).getFile());
 
             VirtualFile file = destinationDirectory.createChildData(destinationDirectory, fileName);
-            fu.writeFile(fileContent, file);
+            renderer.createFile(sourceFile, file, templateModel);
         }
     }
 }
