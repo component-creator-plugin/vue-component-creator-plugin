@@ -73,9 +73,10 @@ By creating a new Vuex module, a couple of files will be generated.
     - index.js
     - mutations.js
     - state.js
-    - mutation-types.js (optional)
-    - getters.js (optional)
+    - mutation-types.js (depending whether you set the `Mutationstypes File`
+    - getters.js (depending wether you checked `Getters File`
 
+### Files
 
 __actions.js__
 This file contains all the actions available
@@ -94,10 +95,28 @@ Exports all mutation types that can be used in `actions.js` and `mutations.js`.
 This file is only generated, if you leave the field `Mutationstypes File` empty
 in the dialog.
 
-
 __getters.js__
 Exports all the available getters. This is only created, if the `Getters File` field
 is checked.
+
+### Options
+
+__Module Name__
+The name of the vuex submodule
+
+__Mutation Name__
+The first mutation name
+
+__Action Name__
+Name of the action, triggering a mutation with the `Mutation Name`
+
+__Mutationtypes File__
+Where to load the `Mutation Name` from. All mutations are stored within the
+same file.
+
+__Files - Getters File__
+Whether to create a getterfile or not
+
 
 ## Icons
 Icons provided by https://www.iconfinder.com/justicon via https://www.iconfinder.com

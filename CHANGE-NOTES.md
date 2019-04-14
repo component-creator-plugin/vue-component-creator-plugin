@@ -1,3 +1,4 @@
+- 1.1.0: Add support for mustache in the template files.
 - 1.0.2: Fix typo
 - 1.0.1: Updated icons upon user request
 - 1.0.0: Add UI for more customized vuex store generation
