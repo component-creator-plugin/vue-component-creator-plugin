@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.vuecomponentcreator</id>
     <name>Vue Component Creator</name>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <description>
@@ -9,11 +9,106 @@
            <h1><a href="#vue-component-creator" id="vue-component-creator">vue-component-creator</a></h1>
 <p>An Brainstorm Plugin to create single file vue.js components with a Sass file along them and complete vuex modules.
 This plugins does a couple of things in order to simplify your dev experience.</p>
+<img src="https://github.com/faebeee/vue-component-creator-plugin/raw/master/doc/new.png"/>
+<h1><a href="#install" id="install">Install</a></h1>
+<p>Search for <code>Vue Component Creator</code> in the plugins settings. Or download the plugin from the <a href="https://github.com/faebeee/vue-component-creator-plugin/releases">release site</a></p>
+<img src="https://github.com/faebeee/vue-component-creator-plugin/raw/master/doc/install.png"/>
+<h2><a href="#vue-single-file-component" id="vue-single-file-component">Vue single file component</a></h2>
+<p>Right click in the project tree view where you want to place the new module. Then <code>New File</code> -&gt; <code>Vue Module</code>.
+This will open a dialog to define the module's name. This name is used later
+to name the directory, vue- and sass-file as well as the sass root name, and a root node in the vue file
+with the given name.</p>
+<img src="https://github.com/faebeee/vue-component-creator-plugin/raw/master/doc/new-component.png"/>
+<p><strong>Example</strong></p>
+<ul>
+  <li>my-module
+    <ul>
+      <li>my-module.vue</li>
+      <li>_my-module.scss</li>
+    </ul>
+  </li>
+</ul>
+<p>File: my-module.vue</p>
+<pre><code class="vue">    &lt;template&gt;
+        &lt;div class=&quot;my-module&quot;&gt;
+            &lt;pre v-text=&quot;$attrs&quot;/&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;script&gt;
+        export default {
+            props: {
+            },
+        };
+    &lt;/script&gt;
+</code></pre>
+<p>File: _my-module.scss</p>
+<pre><code class="scss">    .my-module {
+        // Vars
+
+        // Support
+
+        // Module
+        &amp; {
+            //
+        }
+
+        // Facets
+
+        // States
+    }
+</code></pre>
+<h2><a href="#vuex-module" id="vuex-module">Vuex module</a></h2>
+<img src="https://github.com/faebeee/vue-component-creator-plugin/raw/master/doc/new-vuex.png"/>
+<p>By creating a new Vuex module, a couple of files will be generated.</p>
+<ul>
+  <li>name
+    <ul>
+      <li>actions.js</li>
+      <li>index.js</li>
+      <li>mutations.js</li>
+      <li>state.js</li>
+      <li>mutation-types.js (depending whether you set the <code>Mutationstypes File</code></li>
+      <li>getters.js (depending wether you checked <code>Getters File</code></li>
+    </ul>
+  </li>
+</ul>
+<h3><a href="#files" id="files">Files</a></h3>
+<p><strong>actions.js</strong>
+This file contains all the actions available</p>
+<p><strong>index.js</strong>
+Default entrypoint to load the vuex module</p>
+<p><strong>mutations.js</strong>
+Performs all mutations on the vuex state</p>
+<p><strong>state.js</strong>
+Holds the initial state</p>
+<p><strong>mutation-types.js</strong>
+Exports all mutation types that can be used in <code>actions.js</code> and <code>mutations.js</code>.
+This file is only generated, if you leave the field <code>Mutationstypes File</code> empty
+in the dialog.</p>
+<p><strong>getters.js</strong>
+Exports all the available getters. This is only created, if the <code>Getters File</code> field
+is checked.</p>
+<h3><a href="#options" id="options">Options</a></h3>
+<p><strong>Module Name</strong>
+The name of the vuex submodule</p>
+<p><strong>Mutation Name</strong>
+The first mutation name</p>
+<p><strong>Action Name</strong>
+Name of the action, triggering a mutation with the <code>Mutation Name</code></p>
+<p><strong>Mutationtypes File</strong>
+Where to load the <code>Mutation Name</code> from. All mutations are stored within the
+same file.</p>
+<p><strong>Files - Getters File</strong>
+Whether to create a getterfile or not</p>
+<h2><a href="#icons" id="icons">Icons</a></h2>
+<p>Icons provided by <a href="https://www.iconfinder.com/justicon">https://www.iconfinder.com/justicon</a> via <a href="https://www.iconfinder.com">https://www.iconfinder.com</a></p>
         ]]>
     </description>
 
     <change-notes><![CDATA[
       <ul>
+  <li>1.1.0: Add support for mustache in the template files.</li>
   <li>1.0.2: Fix typo</li>
   <li>1.0.1: Updated icons upon user request</li>
   <li>1.0.0: Add UI for more customized vuex store generation</li>
