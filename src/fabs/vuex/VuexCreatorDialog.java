@@ -1,10 +1,9 @@
 package fabs.vuex;
 
-import org.fest.util.Maps;
-
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class VuexCreatorDialog extends JDialog {
@@ -74,7 +73,7 @@ public class VuexCreatorDialog extends JDialog {
         files.add(INDEX_FILE);
         files.add(MUTATIONS_FILE);
 
-        if(mutationTypesTextField.getText().length() == 0) {
+        if (mutationTypesTextField.getText().length() == 0) {
             files.add(MUTATIONTYPES_FILE);
         }
 
@@ -86,26 +85,14 @@ public class VuexCreatorDialog extends JDialog {
 
     }
 
-    public Map<String, Object> getTemplateVars(){
-         Map<String, Object> templateModel = Maps.newHashMap();
+    public Map<String, Object> getTemplateVars() {
+        Map<String, Object> templateModel = new HashMap<String, Object>();
         templateModel.put("componentName", moduleNameTextField.getText());
         templateModel.put("mutationName", mutationNameTextField.getText());
         templateModel.put("mutationsFile", mutationTypesTextField.getText());
         templateModel.put("getters", gettersCheckBox.isSelected());
         templateModel.put("actionName", actionNameTextField.getText());
         return templateModel;
-    }
-
-    public String getMutationName(){
-        return mutationNameTextField.getText();
-    }
-
-    public String getMutationFilePathForTemplate(){
-        if(mutationTypesTextField.getText().length() == 0){
-            return "./mutation-types.js.mustache";
-        }
-
-        return mutationTypesTextField.getText();
     }
 
     public boolean isCanceled() {

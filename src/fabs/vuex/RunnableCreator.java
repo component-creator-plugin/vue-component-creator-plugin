@@ -11,15 +11,11 @@ public class RunnableCreator implements Runnable {
     public RunnableCreator(VirtualFile directory,
                            String componentName,
                            String[] listOfFilesToCopy,
-                           String mutationTypeFilePath,
-                           String mutationName,
                            Map<String, Object> templateModel) {
         creator = new VuexModuleCreator(
                 directory,
                 componentName,
                 listOfFilesToCopy,
-                mutationTypeFilePath,
-                mutationName,
                 templateModel);
     }
 

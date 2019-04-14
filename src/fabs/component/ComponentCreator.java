@@ -3,9 +3,9 @@ package fabs.component;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import fabs.util.AbstractCreator;
+import fabs.util.FileUtils;
 import fabs.util.TemplateRenderer;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -33,12 +33,11 @@ public class ComponentCreator extends AbstractCreator {
         VirtualFile componentDestFile = componentDirectory.createChildData(componentDirectory, getJsFileName());
         VirtualFile scssDestFile = componentDirectory.createChildData(componentDirectory, getCssFileName());
 
+        FileUtils utils = new FileUtils();
         TemplateRenderer renderer = new TemplateRenderer();
-        File vueFile = new File(getClass().getClassLoader().getResource(vueTemplateFile).getFile());
-        File sassFile = new File(getClass().getClassLoader().getResource(sassTemplateFile).getFile());
 
-        renderer.createFile(vueFile, componentDestFile, templateModel);
-        renderer.createFile(sassFile, scssDestFile, templateModel);
+        utils.writeFile(renderer.render(vueTemplateFile, templateModel), componentDestFile);
+        utils.writeFile(renderer.render(sassTemplateFile, templateModel), scssDestFile);
     }
 
 

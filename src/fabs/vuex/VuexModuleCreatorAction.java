@@ -30,7 +30,6 @@ public class VuexModuleCreatorAction extends AbstractCreatorAction {
 
         final String componentName = dialog.getComponentName();
         String[] listOfFilesToCopy = dialog.getListOfFilesToCopy();
-        String mutationTypeFilePath = dialog.getMutationFilePathForTemplate();
 
         if (dialog.isCanceled()) {
             return;
@@ -41,8 +40,6 @@ public class VuexModuleCreatorAction extends AbstractCreatorAction {
                         targetLocation,
                         componentName,
                         listOfFilesToCopy,
-                        mutationTypeFilePath,
-                        dialog.getMutationName(),
                         dialog.getTemplateVars()
                 )
         );

@@ -1,9 +1,8 @@
 package fabs.component;
 
-import org.fest.util.Maps;
-
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ComponentCreatorDialog extends JDialog {
@@ -49,7 +48,7 @@ public class ComponentCreatorDialog extends JDialog {
     }
 
     public Map<String, Object> getTemplateVars() {
-        Map<String, Object> templateModel = Maps.newHashMap();
+        Map<String, Object> templateModel = new HashMap<String, Object>();
         templateModel.put("componentName", componentNameTextField.getText());
         return templateModel;
     }

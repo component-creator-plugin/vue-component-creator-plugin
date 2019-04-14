@@ -3,39 +3,29 @@ package fabs.vuex;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import fabs.util.AbstractCreator;
+import fabs.util.FileUtils;
 import fabs.util.TemplateRenderer;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 
-
 public class VuexModuleCreator extends AbstractCreator {
-
     protected VirtualFile directory;
     protected String componentName;
     protected String[] listOfFilesToCopy;
-    protected String mutationTypeFilePath;
-    protected String mutationName;
-    protected TemplateRenderer renderer;
     protected Map<String, Object> templateModel;
 
 
     public VuexModuleCreator(VirtualFile directory,
                              String componentName,
                              String[] listOfFilesToCopy,
-                             String mutationTypeFilePath,
-                             String mutationName,
                              Map<String, Object> templateModel) {
         this.directory = directory;
         this.componentName = componentName;
         this.listOfFilesToCopy = listOfFilesToCopy;
-        this.mutationTypeFilePath = mutationTypeFilePath;
-        this.mutationName = mutationName;
         this.templateModel = templateModel;
-        this.renderer = new TemplateRenderer();
     }
 
     @Override
@@ -56,10 +46,12 @@ public class VuexModuleCreator extends AbstractCreator {
 
             Path filePath = Paths.get(sourceTemplateFile);
             String fileName = filePath.getFileName().toString().replace(".mustache", "");
-            File sourceFile = new File(getClass().getClassLoader().getResource(sourceTemplateFile).getFile());
 
             VirtualFile file = destinationDirectory.createChildData(destinationDirectory, fileName);
-            renderer.createFile(sourceFile, file, templateModel);
+
+            FileUtils utils = new FileUtils();
+            TemplateRenderer renderer = new TemplateRenderer();
+            utils.writeFile(renderer.render(sourceTemplateFile, templateModel), file);
         }
     }
 }
