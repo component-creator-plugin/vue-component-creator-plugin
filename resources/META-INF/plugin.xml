@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.vuecomponentcreator</id>
     <name>Vue Component Creator</name>
-    <version>1.1.1</version>
+    <version>1.2.2</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <description>
@@ -89,6 +89,8 @@ in the dialog.</p>
 <p><strong>getters.js</strong>
 Exports all the available getters. This is only created, if the <code>Getters File</code> field
 is checked.</p>
+<p><strong>types.d.js</strong>
+Export an interface representing the state data structure. Depends on the <code>Files State Interface</code> Checkbox</p>
 <h3><a href="#options" id="options">Options</a></h3>
 <p><strong>Module Name</strong>
 The name of the vuex submodule</p>
@@ -103,11 +105,14 @@ same file.</p>
 Whether to create a getterfile or not</p>
 <h2><a href="#icons" id="icons">Icons</a></h2>
 <p>Icons provided by <a href="https://www.iconfinder.com/justicon">https://www.iconfinder.com/justicon</a> via <a href="https://www.iconfinder.com">https://www.iconfinder.com</a></p>
+
+
         ]]>
     </description>
 
     <change-notes><![CDATA[
       <ul>
+  <li>1.2.0: Update templates to fix minor issues. Add more options to the vuex creator</li>
   <li>1.1.0: Add support for mustache in the template files.</li>
   <li>1.0.2: Fix typo</li>
   <li>1.0.1: Updated icons upon user request</li>

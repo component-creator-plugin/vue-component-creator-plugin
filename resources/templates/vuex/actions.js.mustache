@@ -1,5 +1,9 @@
-import {{ mutationName }} from '{{ mutationsFile }}';
+import { {{ mutationName }} } from '{{ mutationsFile }}';
 
-export function {{ actionName }}({ commit }, { data }) {
-    commit({{ mutationName }}, { data });
+/**
+* @param { function } commit
+* @param { {{propertyType}} } {{property}}
+*/
+export function {{ actionName }}({ commit }, { {{ property }} }) {
+    commit({{ mutationName }}, { {{ property }} });
 }

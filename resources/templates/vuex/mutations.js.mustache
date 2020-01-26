@@ -1,7 +1,16 @@
-import {{ mutationName }} from '{{ mutationsFile }}';
+import { {{ mutationName }} } from '{{ mutationsFile }}';
 
 export default {
-    [{{ mutationName }}](state, { data }) {
-        state.data = data;
+    /**
+    {{# useInterface }}
+    * @param { {{tsInterfaceName}} } state
+    {{/ useInterface }}
+     {{ ^useInterface }}
+    * @param { object } state
+    {{/ useInterface }}
+    * @param { {{propertyType}} } {{property}}
+    */
+    [{{ mutationName }}](state, { {{ property }} }) {
+        state.{{ property }} = {{ property }};
     },
 };

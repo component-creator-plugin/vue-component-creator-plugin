@@ -99,6 +99,9 @@ __getters.js__
 Exports all the available getters. This is only created, if the `Getters File` field
 is checked.
 
+__types.d.js__
+Export an interface representing the state data structure. Depends on the `Files State Interface` Checkbox
+
 ### Options
 
 __Module Name__

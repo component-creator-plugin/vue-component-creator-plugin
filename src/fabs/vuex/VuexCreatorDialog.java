@@ -1,5 +1,7 @@
 package fabs.vuex;
 
+import fabs.util.StringFormatter;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -16,11 +18,17 @@ public class VuexCreatorDialog extends JDialog {
     private JLabel mutationtypeFileLabel;
     private JTextField mutationNameTextField;
     private JTextField actionNameTextField;
+    private JTextField propertyNameTextField;
+    private JTextField getterNameTextField;
+    private JCheckBox mutationTypesCheckBox;
+    private JTextField propertyTypeTextField;
+    private JCheckBox stateInterfaceCheckBox;
 
 
     public final String ACTION_FILE = "templates/vuex/actions.js.mustache";
     public final String INDEX_FILE = "templates/vuex/index.js.mustache";
     public final String GETTERS_FILE = "templates/vuex/getters.js.mustache";
+    public final String STATE_INTERFACE = "templates/vuex/types.d.ts.mustache";
     public final String STATE_FILE = "templates/vuex/state.js.mustache";
     public final String MUTATIONS_FILE = "templates/vuex/mutations.js.mustache";
     public final String MUTATIONTYPES_FILE = "templates/vuex/mutation-types.js.mustache";
@@ -73,12 +81,15 @@ public class VuexCreatorDialog extends JDialog {
         files.add(INDEX_FILE);
         files.add(MUTATIONS_FILE);
 
-        if (mutationTypesTextField.getText().length() == 0) {
-            files.add(MUTATIONTYPES_FILE);
-        }
-
         if (gettersCheckBox.isSelected()) {
             files.add(GETTERS_FILE);
+        }
+        if (stateInterfaceCheckBox.isSelected()) {
+            files.add(STATE_INTERFACE);
+        }
+
+        if (mutationTypesCheckBox.isSelected()) {
+            files.add(MUTATIONTYPES_FILE);
         }
 
         return files.toArray(new String[files.size()]);
@@ -87,11 +98,19 @@ public class VuexCreatorDialog extends JDialog {
 
     public Map<String, Object> getTemplateVars() {
         Map<String, Object> templateModel = new HashMap<String, Object>();
-        templateModel.put("componentName", moduleNameTextField.getText());
+        String moduleName = moduleNameTextField.getText();
+
+        templateModel.put("componentName", moduleName);
         templateModel.put("mutationName", mutationNameTextField.getText());
         templateModel.put("mutationsFile", mutationTypesTextField.getText());
-        templateModel.put("getters", gettersCheckBox.isSelected());
         templateModel.put("actionName", actionNameTextField.getText());
+        templateModel.put("property", propertyNameTextField.getText());
+        templateModel.put("getterName", getterNameTextField.getText());
+        templateModel.put("tsInterfaceName", StringFormatter.toSnakeCase(moduleName).concat("State"));
+        templateModel.put("propertyType", propertyTypeTextField.getText());
+
+        templateModel.put("getters", gettersCheckBox.isSelected());
+        templateModel.put("useInterface", stateInterfaceCheckBox.isSelected());
         return templateModel;
     }
 

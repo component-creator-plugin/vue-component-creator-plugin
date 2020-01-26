@@ -1,3 +1,8 @@
-export default {
-    data: null,
-}
+{{# useInterface }}
+/** @type { {{tsInterfaceName}} } */
+{{/ useInterface }}
+const STATE = {
+    {{ property }}: null,
+};
+
+export default STATE;

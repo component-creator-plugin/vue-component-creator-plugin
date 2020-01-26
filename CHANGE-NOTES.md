@@ -1,3 +1,4 @@
+- 1.2.0: Update templates to fix minor issues. Add more options to the vuex creator
 - 1.1.0: Add support for mustache in the template files.
 - 1.0.2: Fix typo
 - 1.0.1: Updated icons upon user request
