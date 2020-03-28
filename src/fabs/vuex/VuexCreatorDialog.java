@@ -16,7 +16,6 @@ public class VuexCreatorDialog extends AbstractDialog {
     private JButton btnCancel;
     private JCheckBox gettersCheckBox;
     private JTextField mutationTypesTextField;
-    private JLabel mutationtypeFileLabel;
     private JTextField mutationNameTextField;
     private JTextField actionNameTextField;
     private JTextField propertyNameTextField;
@@ -34,24 +33,14 @@ public class VuexCreatorDialog extends AbstractDialog {
     public final String MUTATIONS_FILE = "templates/vuex/mutations.js.mustache";
     public final String MUTATIONTYPES_FILE = "templates/vuex/mutation-types.js.mustache";
 
-    private boolean hasCanceled = false;
-
     public VuexCreatorDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(btnOk);
 
-        btnOk.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
+        btnOk.addActionListener(e -> onOK());
 
-        btnCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
+        btnCancel.addActionListener(e -> onCancel());
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -62,11 +51,7 @@ public class VuexCreatorDialog extends AbstractDialog {
         });
 
         // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
     }
 

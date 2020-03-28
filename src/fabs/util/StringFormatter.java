@@ -12,11 +12,6 @@ public class StringFormatter {
         return buffer.toString();
     }
 
-    /**
-     * Transform a string from dash case to camel case
-     * @param input
-     * @return
-     */
     public static String toCamelCase(String input) {
         StringBuffer sb = new StringBuffer();
         for (String s : input.split("-")) {
@@ -26,6 +21,15 @@ public class StringFormatter {
             }
         }
         return sb.toString();
-
     }
+
+    public static String transformTemplateName(String templateString, String componentName) {
+        String[] parts = templateString.split("/");
+        String fileName = parts[parts.length - 1];
+        return fileName
+                .replace(".mustache", "")
+                .replace("component", componentName)
+                ;
+    }
+
 }
