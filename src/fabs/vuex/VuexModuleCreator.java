@@ -7,24 +7,22 @@ import fabs.util.FileUtils;
 import fabs.util.TemplateRenderer;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 
 public class VuexModuleCreator extends AbstractCreator {
     protected VirtualFile directory;
     protected String componentName;
-    protected String[] listOfFilesToCopy;
     protected Map<String, Object> templateModel;
+    protected String[] files;
 
 
     public VuexModuleCreator(VirtualFile directory,
                              String componentName,
-                             String[] listOfFilesToCopy,
-                             Map<String, Object> templateModel) {
+                             Map<String, Object> templateModel,
+                             String[] files) {
         this.directory = directory;
         this.componentName = componentName;
-        this.listOfFilesToCopy = listOfFilesToCopy;
+        this.files = files;
         this.templateModel = templateModel;
     }
 
@@ -36,22 +34,13 @@ public class VuexModuleCreator extends AbstractCreator {
         }
 
         VirtualFile componentDirectory = directory.createChildDirectory(directory, componentName);
+        FileUtils utils = new FileUtils();
 
-        copyAllFiles(this.listOfFilesToCopy, componentDirectory);
-    }
-
-    protected void copyAllFiles(String[] files, VirtualFile destinationDirectory) throws IOException {
         for (int i = 0; i < files.length; i++) {
-            String sourceTemplateFile = files[i];
-
-            Path filePath = Paths.get(sourceTemplateFile);
-            String fileName = filePath.getFileName().toString().replace(".mustache", "");
-
-            VirtualFile file = destinationDirectory.createChildData(destinationDirectory, fileName);
-
-            FileUtils utils = new FileUtils();
-            TemplateRenderer renderer = new TemplateRenderer();
-            utils.writeFile(renderer.render(sourceTemplateFile, templateModel), file);
+            String file = files[i];
+            utils.writeFile(TemplateRenderer.render(file, templateModel),
+                    componentDirectory.createChildData(componentDirectory, TemplateRenderer.transformTemplateName(file, componentName)
+                    ));
         }
     }
 }

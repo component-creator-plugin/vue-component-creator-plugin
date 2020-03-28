@@ -13,14 +13,13 @@ public class ComponentCreator extends AbstractCreator {
     protected VirtualFile directory;
     protected String componentName;
     protected Map<String, Object> templateModel;
+    protected String[] files;
 
-    private final String vueTemplateFile = "templates/component/component.vue.mustache";
-    private final String sassTemplateFile = "templates/component/component.scss.mustache";
-
-    public ComponentCreator(VirtualFile directory, String componentName, Map<String, Object> templateModel) {
+    public ComponentCreator(VirtualFile directory, String componentName, Map<String, Object> templateModel, String[] files) {
         this.directory = directory;
         this.componentName = componentName;
         this.templateModel = templateModel;
+        this.files = files;
     }
 
     public void create() throws IOException {
@@ -30,23 +29,14 @@ public class ComponentCreator extends AbstractCreator {
         }
 
         VirtualFile componentDirectory = directory.createChildDirectory(directory, componentName);
-        VirtualFile componentDestFile = componentDirectory.createChildData(componentDirectory, getJsFileName());
-        VirtualFile scssDestFile = componentDirectory.createChildData(componentDirectory, getCssFileName());
 
         FileUtils utils = new FileUtils();
-        TemplateRenderer renderer = new TemplateRenderer();
 
-        utils.writeFile(renderer.render(vueTemplateFile, templateModel), componentDestFile);
-        utils.writeFile(renderer.render(sassTemplateFile, templateModel), scssDestFile);
+        for (int i = 0; i < files.length; i++) {
+            String file = files[i];
+            utils.writeFile(TemplateRenderer.render(file, templateModel),
+                    componentDirectory.createChildData(componentDirectory, TemplateRenderer.transformTemplateName(file, componentName)
+                    ));
+        }
     }
-
-
-    private String getCssFileName() {
-        return "_" + componentName + ".scss";
-    }
-
-    private String getJsFileName() {
-        return componentName + ".vue";
-    }
-
 }

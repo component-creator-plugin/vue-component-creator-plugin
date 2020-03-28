@@ -1,5 +1,6 @@
 package fabs.vuex;
 
+import fabs.util.AbstractDialog;
 import fabs.util.StringFormatter;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VuexCreatorDialog extends JDialog {
+public class VuexCreatorDialog extends AbstractDialog {
     private JPanel contentPane;
     private JTextField moduleNameTextField;
     private JButton btnOk;
@@ -73,7 +74,8 @@ public class VuexCreatorDialog extends JDialog {
         return moduleNameTextField.getText();
     }
 
-    public String[] getListOfFilesToCopy() {
+    @Override
+    public String[] getFiles() {
         ArrayList<String> files = new ArrayList<String>();
 
         files.add(ACTION_FILE);
@@ -112,19 +114,5 @@ public class VuexCreatorDialog extends JDialog {
         templateModel.put("getters", gettersCheckBox.isSelected());
         templateModel.put("useInterface", stateInterfaceCheckBox.isSelected());
         return templateModel;
-    }
-
-    public boolean isCanceled() {
-        return hasCanceled;
-    }
-
-    private void onOK() {
-        hasCanceled = false;
-        dispose();
-    }
-
-    private void onCancel() {
-        hasCanceled = true;
-        dispose();
     }
 }

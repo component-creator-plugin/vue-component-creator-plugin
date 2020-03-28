@@ -1,17 +1,21 @@
 package fabs.component;
 
+import fabs.util.AbstractDialog;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ComponentCreatorDialog extends JDialog {
+public class ComponentCreatorDialog extends AbstractDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private JTextField componentNameTextField;
 
-    private boolean hasCanceled = false;
+    private final String vueTemplateFile = "templates/component/component.vue.mustache";
+    private final String sassTemplateFile = "templates/component/_component.scss.mustache";
 
     public ComponentCreatorDialog() {
         setContentPane(contentPane);
@@ -47,6 +51,15 @@ public class ComponentCreatorDialog extends JDialog {
 
     }
 
+    @Override
+    public String[] getFiles() {
+        ArrayList<String> files = new ArrayList<String>();
+        files.add(vueTemplateFile);
+        files.add(sassTemplateFile);
+
+        return files.toArray(new String[files.size()]);
+    }
+
     public Map<String, Object> getTemplateVars() {
         Map<String, Object> templateModel = new HashMap<String, Object>();
         templateModel.put("componentName", componentNameTextField.getText());
@@ -57,18 +70,5 @@ public class ComponentCreatorDialog extends JDialog {
         return componentNameTextField.getText();
     }
 
-    public boolean isCanceled() {
-        return hasCanceled;
-    }
-
-    private void onOK() {
-        hasCanceled = false;
-        dispose();
-    }
-
-    private void onCancel() {
-        hasCanceled = true;
-        dispose();
-    }
 
 }
