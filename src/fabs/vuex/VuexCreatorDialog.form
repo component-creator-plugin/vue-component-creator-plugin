@@ -38,15 +38,6 @@
               <text value="Action Name"/>
             </properties>
           </component>
-          <component id="6004d" class="javax.swing.JLabel" binding="mutationtypeFileLabel">
-            <constraints>
-              <grid row="10" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <labelFor value="5038a"/>
-              <text value="Mutationtypes File"/>
-            </properties>
-          </component>
           <component id="88210" class="javax.swing.JTextField" binding="mutationTypesTextField" default-binding="true">
             <constraints>
               <grid row="10" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -209,6 +200,14 @@
             </constraints>
             <properties>
               <text value="string"/>
+            </properties>
+          </component>
+          <component id="1bd55" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Mutation Types File"/>
             </properties>
           </component>
         </children>

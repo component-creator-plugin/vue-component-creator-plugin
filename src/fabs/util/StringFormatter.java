@@ -23,6 +23,10 @@ public class StringFormatter {
         return sb.toString();
     }
 
+    public static String capitalizeFirst(String input) {
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
+    }
+
     public static String transformTemplateName(String templateString, String componentName) {
         String[] parts = templateString.split("/");
         String fileName = parts[parts.length - 1];

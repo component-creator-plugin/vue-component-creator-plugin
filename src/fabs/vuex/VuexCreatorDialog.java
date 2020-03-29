@@ -60,7 +60,12 @@ public class VuexCreatorDialog extends AbstractDialog {
     }
 
     @Override
-    public String[] getFiles() {
+    public String getDirectoryName() {
+        return moduleNameTextField.getText();
+    }
+
+    @Override
+    public ArrayList<String> getFiles() {
         ArrayList<String> files = new ArrayList<String>();
 
         files.add(ACTION_FILE);
@@ -79,7 +84,7 @@ public class VuexCreatorDialog extends AbstractDialog {
             files.add(MUTATIONTYPES_FILE);
         }
 
-        return files.toArray(new String[files.size()]);
+        return files;
 
     }
 

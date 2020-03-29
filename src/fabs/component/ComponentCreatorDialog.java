@@ -40,12 +40,12 @@ public class ComponentCreatorDialog extends AbstractDialog {
     }
 
     @Override
-    public String[] getFiles() {
+    public ArrayList<String> getFiles() {
         ArrayList<String> files = new ArrayList<>();
         files.add(vueTemplateFile);
         files.add(sassTemplateFile);
 
-        return files.toArray(new String[files.size()]);
+        return files;
     }
 
     public Map<String, Object> getTemplateVars() {
@@ -55,6 +55,11 @@ public class ComponentCreatorDialog extends AbstractDialog {
     }
 
     public String getComponentName() {
+        return componentNameTextField.getText();
+    }
+
+    @Override
+    public String getDirectoryName() {
         return componentNameTextField.getText();
     }
 

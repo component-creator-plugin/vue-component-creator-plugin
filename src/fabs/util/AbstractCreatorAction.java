@@ -29,7 +29,7 @@ public abstract class AbstractCreatorAction extends AnAction {
         return file.getParent();
     }
 
-     @Override
+    @Override
     public void actionPerformed(AnActionEvent e) {
         AbstractDialog dialog = this.createDialog();
         VirtualFile selectedLocation = e.getData(CommonDataKeys.VIRTUAL_FILE);
@@ -45,15 +45,12 @@ public abstract class AbstractCreatorAction extends AnAction {
         dialog.pack();
         dialog.setVisible(true);
 
-        final String componentName = dialog.getComponentName();
-
         if (dialog.isCanceled()) {
             return;
         }
 
         ApplicationManager.getApplication().runWriteAction(
-                new Creator(targetLocation, componentName, dialog.getTemplateVars(), dialog.getFiles())
+                new Creator(targetLocation, dialog.getDirectoryName(), dialog.getComponentName(), dialog.getTemplateVars(), dialog.getFileList())
         );
     }
-
 }
