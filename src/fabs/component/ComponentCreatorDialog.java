@@ -11,7 +11,6 @@ import java.util.Map;
 public class ComponentCreatorDialog extends AbstractDialog {
     private JPanel contentPane;
     private JButton buttonOK;
-    private JButton buttonCancel;
     private JTextField componentNameTextField;
 
     private final String vueTemplateFile = "templates/component/component.vue.mustache";
@@ -24,8 +23,6 @@ public class ComponentCreatorDialog extends AbstractDialog {
 
         buttonOK.addActionListener(e -> onOK());
 
-        buttonCancel.addActionListener(e -> onCancel());
-
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -36,7 +33,6 @@ public class ComponentCreatorDialog extends AbstractDialog {
 
         // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-
     }
 
     @Override
@@ -62,6 +58,4 @@ public class ComponentCreatorDialog extends AbstractDialog {
     public String getDirectoryName() {
         return componentNameTextField.getText();
     }
-
-
 }

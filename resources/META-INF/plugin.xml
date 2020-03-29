@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.vuecomponentcreator</id>
     <name>Vue Component Creator</name>
-    <version>1.2.2</version>
+    <version>1.3.0</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <description>
@@ -112,16 +112,17 @@ Whether to create a getterfile or not</p>
 
     <change-notes><![CDATA[
       <ul>
-  <li>1.2.0: Update templates to fix minor issues. Add more options to the vuex creator</li>
-  <li>1.1.0: Add support for mustache in the template files.</li>
-  <li>1.0.2: Fix typo</li>
-  <li>1.0.1: Updated icons upon user request</li>
-  <li>1.0.0: Add UI for more customized vuex store generation</li>
-  <li>0.6.0: Add functionality to create vuex modules</li>
-  <li>0.5.0: Fix component creation if you cancel the modal</li>
-  <li>Auto open files in editor after creation</li>
-  <li>Update template</li>
-</ul>
+          <li>1.3.0: Code refactoring and improvements</li>
+          <li>1.2.0: Update templates to fix minor issues. Add more options to the vuex creator</li>
+          <li>1.1.0: Add support for mustache in the template files.</li>
+          <li>1.0.2: Fix typo</li>
+          <li>1.0.1: Updated icons upon user request</li>
+          <li>1.0.0: Add UI for more customized vuex store generation</li>
+          <li>0.6.0: Add functionality to create vuex modules</li>
+          <li>0.5.0: Fix component creation if you cancel the modal</li>
+          <li>Auto open files in editor after creation</li>
+          <li>Update template</li>
+        </ul>
     ]]>
     </change-notes>
 
@@ -139,21 +140,25 @@ Whether to create a getterfile or not</p>
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
-        <action id="VueComponent.ComponentCreatorAction"
-                class="fabs.component.ComponentCreatorAction"
-                icon="/icons/component.png"
-                text="Vue Component"
-                description="Create Vue component">
+        <group description="Vue" id="Vue">
+            <separator/>
+            <action id="VueComponent.ComponentCreatorAction"
+                    class="fabs.component.ComponentCreatorAction"
+                    icon="/icons/component.png"
+                    text="Vue Component"
+                    description="Create Vue component">
+            </action>
+
+            <action id="VueComponent.VuexModuleCreatorAction"
+                    class="fabs.vuex.VuexModuleCreatorAction"
+                    icon="/icons/store.png"
+                    text="Vuex Module"
+                    description="Create new Vuex module">
+            </action>
+            <separator/>
+
             <add-to-group group-id="NewGroup" anchor="first"/>
-        </action>
-        <action id="VueComponent.VuexModuleCreatorAction"
-                class="fabs.vuex.VuexModuleCreatorAction"
-                icon="/icons/store.png"
-                text="Vuex Module"
-                description="Create new Vuex module">
-            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="VueComponent.ComponentCreatorAction"/>
-        </action>
+        </group>
     </actions>
 
 </idea-plugin>

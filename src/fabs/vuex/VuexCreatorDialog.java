@@ -13,7 +13,6 @@ public class VuexCreatorDialog extends AbstractDialog {
     private JPanel contentPane;
     private JTextField moduleNameTextField;
     private JButton btnOk;
-    private JButton btnCancel;
     private JCheckBox gettersCheckBox;
     private JTextField mutationTypesTextField;
     private JTextField mutationNameTextField;
@@ -39,8 +38,6 @@ public class VuexCreatorDialog extends AbstractDialog {
         getRootPane().setDefaultButton(btnOk);
 
         btnOk.addActionListener(e -> onOK());
-
-        btnCancel.addActionListener(e -> onCancel());
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
