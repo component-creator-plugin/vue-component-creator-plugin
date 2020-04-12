@@ -41,6 +41,11 @@ File: my-module.vue
             },
         };
     </script>
+    
+    <style lang="scss">
+        @import "my-module";
+    </style>
+
 ```
 
 File: _my-module.scss
