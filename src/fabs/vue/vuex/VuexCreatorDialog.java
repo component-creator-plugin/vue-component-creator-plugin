@@ -14,8 +14,6 @@ public class VuexCreatorDialog extends AbstractDialog<VuexCreateOptions> {
     private JButton btnOk;
     private JCheckBox gettersCheckBox;
     private JTextField mutationTypesTextField;
-    private JTextField mutationNameTextField;
-    private JTextField actionNameTextField;
     private JTextField propertyNameTextField;
     private JTextField getterNameTextField;
     private JCheckBox mutationTypesCheckBox;
@@ -53,8 +51,6 @@ public class VuexCreatorDialog extends AbstractDialog<VuexCreateOptions> {
     public VuexCreateOptions setOptions(VuexCreateOptions options) {
         options.setModuleName(moduleNameTextField.getText());
         options.setMutationTypesFilePath(mutationTypesTextField.getText());
-        options.setMutationName(mutationNameTextField.getText());
-        options.setActionName(actionNameTextField.getText());
         options.setPropertyName(propertyNameTextField.getText());
         options.setGetterName(getterNameTextField.getText());
         options.setPropertyType(propertyTypeTextField.getText());

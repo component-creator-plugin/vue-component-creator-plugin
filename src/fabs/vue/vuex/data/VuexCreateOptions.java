@@ -32,8 +32,6 @@ public class VuexCreateOptions extends AbstractOptions {
     private Boolean isCreateMutationTypes = false;
 
     private String moduleName;
-    private String mutationName;
-    private String actionName;
     private String mutationTypesFilePath;
     private String propertyName;
     private String getterName;
@@ -69,10 +67,8 @@ public class VuexCreateOptions extends AbstractOptions {
         Map<String, Object> templateModel = new HashMap<String, Object>();
 
         templateModel.put("componentName", moduleName);
-        templateModel.put("mutationName", mutationName);
 
         templateModel.put("mutationsFile", mutationTypesFilePath);
-        templateModel.put("actionName", actionName);
         templateModel.put("property", propertyName);
         templateModel.put("getterName", getterName);
         templateModel.put("propertyType", propertyType);
@@ -80,6 +76,8 @@ public class VuexCreateOptions extends AbstractOptions {
         templateModel.put("getters", isCreateGetters);
         templateModel.put("useInterface", isCreateTypes);
 
+        templateModel.put("actionName", "set".concat(StringFormatter.capitalizeFirst(propertyName)));
+        templateModel.put("mutationName", "SET_".concat(propertyName.toUpperCase()));
         templateModel.put("tsInterfaceName", StringFormatter.toSnakeCase(moduleName).concat("State"));
         return templateModel;
     }
@@ -180,22 +178,6 @@ public class VuexCreateOptions extends AbstractOptions {
 
     public void setModuleName(String moduleName) {
         this.moduleName = moduleName;
-    }
-
-    public String getMutationName() {
-        return mutationName;
-    }
-
-    public void setMutationName(String mutationName) {
-        this.mutationName = mutationName;
-    }
-
-    public String getActionName() {
-        return actionName;
-    }
-
-    public void setActionName(String actionName) {
-        this.actionName = actionName;
     }
 
     public String getMutationTypesFilePath() {
