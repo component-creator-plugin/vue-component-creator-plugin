@@ -51,6 +51,7 @@ public class VuexCreatorDialog extends AbstractDialog<VuexCreateOptions> {
 
     @Override
     public VuexCreateOptions setOptions(VuexCreateOptions options) {
+        options.setModuleName(moduleNameTextField.getText());
         options.setMutationTypesFilePath(mutationTypesTextField.getText());
         options.setMutationName(mutationNameTextField.getText());
         options.setActionName(actionNameTextField.getText());

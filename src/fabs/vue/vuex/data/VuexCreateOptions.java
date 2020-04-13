@@ -66,7 +66,6 @@ public class VuexCreateOptions extends AbstractOptions {
 
     @Override
     public Map<String, Object> getTemplateVariables() {
-
         Map<String, Object> templateModel = new HashMap<String, Object>();
 
         templateModel.put("componentName", moduleName);
