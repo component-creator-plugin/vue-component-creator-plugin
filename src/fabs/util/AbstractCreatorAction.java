@@ -12,7 +12,7 @@ import java.awt.*;
 
 public abstract class AbstractCreatorAction extends AnAction {
 
-    protected abstract AbstractDialog createDialog();
+    protected abstract AbstractDialog createDialog(Project project);
 
     @Override
     public void update(AnActionEvent anActionEvent) {
@@ -31,7 +31,7 @@ public abstract class AbstractCreatorAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        AbstractDialog dialog = this.createDialog();
+        AbstractDialog dialog = this.createDialog(e.getProject());
         VirtualFile selectedLocation = e.getData(CommonDataKeys.VIRTUAL_FILE);
         VirtualFile targetLocation = getLocation(selectedLocation);
 
@@ -50,7 +50,7 @@ public abstract class AbstractCreatorAction extends AnAction {
         }
 
         ApplicationManager.getApplication().runWriteAction(
-                new Creator(targetLocation, dialog.getDirectoryName(), dialog.getComponentName(), dialog.getTemplateVars(), dialog.getFileList())
+                new Creator(targetLocation, dialog.getDirectoryName(), dialog.getComponentName(), dialog.getOptions())
         );
     }
 }

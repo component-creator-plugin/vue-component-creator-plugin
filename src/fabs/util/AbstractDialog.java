@@ -1,24 +1,32 @@
 package fabs.util;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Map;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public abstract class AbstractDialog extends JDialog {
+public abstract class AbstractDialog<T extends AbstractOptions> extends JDialog {
+    protected T options;
 
-    protected abstract ArrayList<String> getFiles();
+    public AbstractDialog(T options) {
+        super();
+        this.options = options;
 
-    public abstract Map<String, Object> getTemplateVars();
+        setModal(true);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                onCancel();
+            }
+        });
+    }
 
     public abstract String getComponentName();
+
     public abstract String getDirectoryName();
 
-    protected boolean hasCanceled = false;
+    public abstract T setOptions(T options);
 
-    public String[] getFileList() {
-        ArrayList<String> files = getFiles();
-        return files.toArray(new String[files.size()]);
-    }
+    protected boolean hasCanceled = false;
 
     public boolean isCanceled() {
         return hasCanceled;
@@ -27,10 +35,15 @@ public abstract class AbstractDialog extends JDialog {
     protected void onOK() {
         hasCanceled = false;
         dispose();
+        this.options = setOptions(this.options);
     }
 
     protected void onCancel() {
         hasCanceled = true;
         dispose();
+    }
+
+    public T getOptions() {
+        return options;
     }
 }

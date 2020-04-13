@@ -23,17 +23,24 @@ public class StringFormatter {
         return sb.toString();
     }
 
+    public static String toDashCase(String input) {
+        StringBuffer sb = new StringBuffer();
+        int c = 0;
+        for (String s : input.split("-")) {
+            if (c != 0) {
+                sb.append("_");
+            }
+
+            sb.append(Character.toLowerCase(s.charAt(0)));
+            if (s.length() > 1) {
+                sb.append(s.substring(1, s.length()).toLowerCase());
+            }
+            c++;
+        }
+        return sb.toString();
+    }
+
     public static String capitalizeFirst(String input) {
         return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
-
-    public static String transformTemplateName(String templateString, String componentName) {
-        String[] parts = templateString.split("/");
-        String fileName = parts[parts.length - 1];
-        return fileName
-                .replace(".mustache", "")
-                .replace("component", componentName)
-                ;
-    }
-
 }

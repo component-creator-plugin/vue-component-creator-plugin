@@ -143,14 +143,14 @@ Whether to create a getterfile or not</p>
         <group description="Vue" id="Vue">
             <separator/>
             <action id="VueComponent.ComponentCreatorAction"
-                    class="fabs.component.ComponentCreatorAction"
+                    class="fabs.vue.component.action.ComponentCreatorAction"
                     icon="/icons/component.png"
                     text="Vue Component"
                     description="Create Vue component">
             </action>
 
             <action id="VueComponent.VuexModuleCreatorAction"
-                    class="fabs.vuex.VuexModuleCreatorAction"
+                    class="fabs.vue.vuex.VuexModuleCreatorAction"
                     icon="/icons/store.png"
                     text="Vuex Module"
                     description="Create new Vuex module">

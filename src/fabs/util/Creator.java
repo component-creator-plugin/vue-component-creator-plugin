@@ -10,15 +10,13 @@ public class Creator implements Runnable {
     protected VirtualFile directory;
     protected String componentName;
     protected String directoryName;
-    protected String[] files;
-    protected Map<String, Object> templateModel;
+    protected AbstractOptions options;
 
-    public Creator(VirtualFile directory, String directoryName,String componentName, Map<String, Object> templateModel, String[] files) {
+    public Creator(VirtualFile directory, String directoryName, String componentName, AbstractOptions options) {
         this.directory = directory;
         this.componentName = componentName;
         this.directoryName = directoryName;
-        this.templateModel = templateModel;
-        this.files = files;
+        this.options = options;
     }
 
     public void create() throws IOException {
@@ -34,10 +32,13 @@ public class Creator implements Runnable {
         FileUtils utils = new FileUtils();
         TemplateRenderer renderer = new TemplateRenderer();
         VirtualFile componentDirectory = directory.createChildDirectory(directory, directoryName);
+        Map<String, Object> variablemap = options.getTemplateVariables();
+
+        String[] files = options.getFileList();
 
         for (int i = 0; i < files.length; i++) {
             String file = files[i];
-            utils.writeFile(renderer.render(file, templateModel), componentDirectory.createChildData(componentDirectory, StringFormatter.transformTemplateName(file, componentName)));
+            utils.writeFile(renderer.render(file, variablemap), componentDirectory.createChildData(componentDirectory, TemplateRenderer.transformTemplateName(file, variablemap)));
         }
     }
 
