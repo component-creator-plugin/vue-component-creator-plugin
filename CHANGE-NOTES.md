@@ -1,3 +1,5 @@
+- 2.0.0: Add Settings
+- 1.3.0: Code refactoring and improvements
 - 1.2.0: Update templates to fix minor issues. Add more options to the vuex creator
 - 1.1.0: Add support for mustache in the template files.
 - 1.0.2: Fix typo

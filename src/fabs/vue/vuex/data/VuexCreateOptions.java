@@ -84,6 +84,7 @@ public class VuexCreateOptions extends AbstractOptions {
 
         templateModel.put("getters", isCreateGetters);
         templateModel.put("useInterface", isCreateTypes);
+        templateModel.put("createMutationTypes", isCreateMutationTypes);
 
         templateModel.put("actionName", "set".concat(StringFormatter.capitalizeFirst(propertyName)));
         templateModel.put("mutationName", "SET_".concat(propertyName.toUpperCase()));
