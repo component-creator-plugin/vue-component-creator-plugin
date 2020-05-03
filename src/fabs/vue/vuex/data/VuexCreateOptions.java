@@ -11,6 +11,14 @@ import java.util.Map;
 public class VuexCreateOptions extends AbstractOptions {
     public static final String STORE_KEY = "vcc.vuex";
 
+    private final String ACTION_FILE_KEY = "ACTION_FILE";
+    private final String INDEX_FILE_KEY = "INDEX_FILE_KEY";
+    private final String GETTERS_FILE_KEY = "GETTERS_FILE_KEY";
+    private final String MUTATIONS_FILE_KEY = "MUTATIONS_FILE_KEY";
+    private final String MUTATION_TYPES_FILE_KEY = "MUTATION_TYPES_FILE_KEY";
+    private final String STATE_FILE_KEY = "STATE_FILE_KEY";
+    private final String TYPES_FILE_KEY = "TYPES_FILE_KEY";
+
     private final String defaultActionFile = "templates/vuex/actions.js.mustache";
     private final String defaultIndexFile = "templates/vuex/index.js.mustache";
     private final String defaultGettersFile = "templates/vuex/getters.js.mustache";
@@ -51,6 +59,7 @@ public class VuexCreateOptions extends AbstractOptions {
         if (isCreateGetters) {
             files.add(gettersFile);
         }
+
         if (isCreateTypes) {
             files.add(typesFile);
         }
@@ -84,12 +93,55 @@ public class VuexCreateOptions extends AbstractOptions {
 
     @Override
     public Element serialize() {
-        return null;
+        final Element element = new Element(STORE_KEY);
+        element.setAttribute(ACTION_FILE_KEY, actionFile);
+        element.setAttribute(INDEX_FILE_KEY, indexFile);
+        element.setAttribute(GETTERS_FILE_KEY, gettersFile);
+        element.setAttribute(MUTATIONS_FILE_KEY, mutationsFile);
+        element.setAttribute(MUTATION_TYPES_FILE_KEY, mutationTypesFile);
+        element.setAttribute(STATE_FILE_KEY, stateFile);
+        element.setAttribute(TYPES_FILE_KEY, typesFile);
+        return element;
     }
 
     @Override
     public void deserialize(Element element) {
+        setActionFile(element.getAttributeValue(ACTION_FILE_KEY));
+        setIndexFile(element.getAttributeValue(INDEX_FILE_KEY));
+        setGettersFile(element.getAttributeValue(GETTERS_FILE_KEY));
+        setMutationsFile(element.getAttributeValue(MUTATIONS_FILE_KEY));
+        setMutationTypesFile(element.getAttributeValue(MUTATION_TYPES_FILE_KEY));
+        setStateFile(element.getAttributeValue(STATE_FILE_KEY));
+        setTypesFile(element.getAttributeValue(TYPES_FILE_KEY));
 
+    }
+
+    public boolean isActionsTemplateDefault() {
+        return actionFile.equals(defaultActionFile);
+    }
+
+    public boolean isIndexTemplateDefault() {
+        return indexFile.equals(defaultIndexFile);
+    }
+
+    public boolean isGettersTemplateDefault() {
+        return gettersFile.equals(defaultGettersFile);
+    }
+
+    public boolean isMutationTemplateDefault() {
+        return mutationsFile.equals(defaultMutationsFile);
+    }
+
+    public boolean isMutationTypesTemplateDefault() {
+        return mutationTypesFile.equals(defaultMutationTypesFile);
+    }
+
+    public boolean isStateTemplateDefault() {
+        return stateFile.equals(defaultStateFile);
+    }
+
+    public boolean isTypesTemplateDefault() {
+        return typesFile.equals(defaultTypesFile);
     }
 
     public String getActionFile() {
@@ -97,7 +149,7 @@ public class VuexCreateOptions extends AbstractOptions {
     }
 
     public void setActionFile(String actionFile) {
-        this.actionFile = actionFile;
+        this.actionFile = actionFile == null || actionFile.isEmpty() ? defaultActionFile : actionFile;
     }
 
     public String getIndexFile() {
@@ -105,7 +157,7 @@ public class VuexCreateOptions extends AbstractOptions {
     }
 
     public void setIndexFile(String indexFile) {
-        this.indexFile = indexFile;
+        this.indexFile = indexFile == null || indexFile.isEmpty() ? defaultIndexFile : indexFile;
     }
 
     public String getGettersFile() {
@@ -113,7 +165,7 @@ public class VuexCreateOptions extends AbstractOptions {
     }
 
     public void setGettersFile(String gettersFile) {
-        this.gettersFile = gettersFile;
+        this.gettersFile = gettersFile == null || gettersFile.isEmpty() ? defaultGettersFile : gettersFile;
     }
 
     public String getMutationsFile() {
@@ -121,7 +173,7 @@ public class VuexCreateOptions extends AbstractOptions {
     }
 
     public void setMutationsFile(String mutationsFile) {
-        this.mutationsFile = mutationsFile;
+        this.mutationsFile = mutationsFile == null || mutationsFile.isEmpty() ? defaultMutationsFile : mutationsFile;
     }
 
     public String getMutationTypesFile() {
@@ -129,7 +181,7 @@ public class VuexCreateOptions extends AbstractOptions {
     }
 
     public void setMutationTypesFile(String mutationTypesFile) {
-        this.mutationTypesFile = mutationTypesFile;
+        this.mutationTypesFile = mutationTypesFile == null || mutationTypesFile.isEmpty() ? defaultMutationTypesFile : mutationTypesFile;
     }
 
     public String getStateFile() {
@@ -137,7 +189,7 @@ public class VuexCreateOptions extends AbstractOptions {
     }
 
     public void setStateFile(String stateFile) {
-        this.stateFile = stateFile;
+        this.stateFile = stateFile == null || stateFile.isEmpty() ? defaultStateFile : stateFile;
     }
 
     public String getTypesFile() {
@@ -145,7 +197,7 @@ public class VuexCreateOptions extends AbstractOptions {
     }
 
     public void setTypesFile(String typesFile) {
-        this.typesFile = typesFile;
+        this.typesFile = typesFile == null || typesFile.isEmpty() ? defaultTypesFile : typesFile;
     }
 
     public Boolean getCreateGetters() {
@@ -153,7 +205,7 @@ public class VuexCreateOptions extends AbstractOptions {
     }
 
     public void setCreateGetters(Boolean createGetters) {
-        isCreateGetters = createGetters;
+        this.isCreateGetters = createGetters;
     }
 
     public Boolean getCreateTypes() {
