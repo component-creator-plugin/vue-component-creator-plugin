@@ -136,7 +136,14 @@ Whether to create a getterfile or not</p>
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <projectService serviceInterface="fabs.vue.component.data.ComponentSettingsState"
+                        serviceImplementation="fabs.vue.component.data.ComponentSettingsState"/>
+
+        <projectConfigurable
+                instance="fabs.vue.component.settings.ComponentSettings"
+                id="vcc.settings"
+                displayName="Vue Component Creator"
+                nonDefaultProject="true"/>
     </extensions>
 
     <actions>
