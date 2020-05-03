@@ -139,10 +139,28 @@ Whether to create a getterfile or not</p>
         <projectService serviceInterface="fabs.vue.component.data.ComponentSettingsState"
                         serviceImplementation="fabs.vue.component.data.ComponentSettingsState"/>
 
+        <projectService serviceInterface="fabs.vue.vuex.data.VuexSettingsState"
+                        serviceImplementation="fabs.vue.vuex.data.VuexSettingsState"/>
+
         <projectConfigurable
                 instance="fabs.vue.component.settings.ComponentSettings"
                 id="vcc.settings"
                 displayName="Vue Component Creator"
+                nonDefaultProject="true"/>
+
+
+        <projectConfigurable
+                instance="fabs.vue.component.settings.ComponentSettings"
+                id="vcc.settings.component"
+                parentId="vcc.settings"
+                displayName="Component"
+                nonDefaultProject="true"/>
+
+        <projectConfigurable
+                instance="fabs.vue.vuex.settings.VuexSettings"
+                id="vcc.settings.vuex"
+                parentId="vcc.settings"
+                displayName="Vuex Module"
                 nonDefaultProject="true"/>
     </extensions>
 
@@ -157,7 +175,7 @@ Whether to create a getterfile or not</p>
             </action>
 
             <action id="VueComponent.VuexModuleCreatorAction"
-                    class="fabs.vue.vuex.VuexModuleCreatorAction"
+                    class="fabs.vue.vuex.action.VuexModuleCreatorAction"
                     icon="/icons/store.png"
                     text="Vuex Module"
                     description="Create new Vuex module">
