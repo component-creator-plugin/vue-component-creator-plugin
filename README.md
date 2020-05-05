@@ -1,4 +1,9 @@
 # vue-component-creator
+
+![Downloads](https://img.shields.io/jetbrains/plugin/d/11443-vue-component-creator?style=for-the-badge)
+![Version](https://img.shields.io/jetbrains/plugin/v/11443-vue-component-creator?style=for-the-badge)
+![Rating](https://img.shields.io/jetbrains/plugin/r/rating/11443-vue-component-creator?style=for-the-badge)
+
 An Brainstorm Plugin to create single file vue.js components with a Sass file along them and complete vuex modules.
 This plugins does a couple of things in order to simplify your dev experience.
 
