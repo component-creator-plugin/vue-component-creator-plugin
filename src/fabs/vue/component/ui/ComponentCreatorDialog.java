@@ -10,6 +10,8 @@ public class ComponentCreatorDialog extends AbstractDialog<ComponentCreateOption
     private JPanel contentPane;
     private JButton buttonOK;
     private JTextField componentNameTextField;
+    private JCheckBox storybookFileCheckbox;
+    private JCheckBox scssFileCheckbox;
 
     public ComponentCreatorDialog(ComponentCreateOptions opt) {
         super(opt);
@@ -35,6 +37,8 @@ public class ComponentCreatorDialog extends AbstractDialog<ComponentCreateOption
     @Override
     public ComponentCreateOptions setOptions(ComponentCreateOptions options) {
         options.setComponentName(componentNameTextField.getText());
+        options.setCreateSassFile(scssFileCheckbox.isSelected());
+        options.setCreateStorybookFile(storybookFileCheckbox.isSelected());
         return options;
     }
 }

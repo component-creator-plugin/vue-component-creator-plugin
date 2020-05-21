@@ -5,6 +5,7 @@ Available variables
 Variable | Type | Description
 ---|---|---
 componentName | `string` | Name of the component
+componentNameCamelCase | `string` | Name of the component in camelCase
 
 ##  {{componentName}}.vue.mustache
     <template>
