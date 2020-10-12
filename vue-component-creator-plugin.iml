@@ -9,7 +9,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/doc" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="IntelliJ IDEA Community Edition IC-202.7660.26" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="com.samskivert:jmustache:1.14" level="project" />
   </component>

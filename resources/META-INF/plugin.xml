@@ -131,5 +131,4 @@
             <add-to-group group-id="NewGroup" anchor="first"/>
         </group>
     </actions>
-
 </idea-plugin>
