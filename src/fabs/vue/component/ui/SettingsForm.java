@@ -13,6 +13,8 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
     private JButton browseSassBtn;
     private JTextField storybookTemplateInput;
     private JButton browseStorybookBtn;
+    private JTextField specTemplateInput;
+    private JButton specBrowseBtn;
 
     public SettingsForm(ComponentCreateOptions options) {
         super(options);
@@ -29,9 +31,14 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
             storybookTemplateInput.setText(options.getStorybookTemplateFile());
         }
 
+        if (!options.isSpecTemplateDefault()) {
+            specTemplateInput.setText(options.getSpecTemplateFile());
+        }
+
         componentBrowseBtn.addActionListener(e -> onBrowseButtonClicked(e, componentTemplateInput));
         browseSassBtn.addActionListener(e -> onBrowseButtonClicked(e, sassTemplateInput));
         browseStorybookBtn.addActionListener(e -> onBrowseButtonClicked(e, storybookTemplateInput));
+        specBrowseBtn.addActionListener(e -> onBrowseButtonClicked(e, specTemplateInput));
     }
 
     @Override
@@ -51,9 +58,11 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
         String template = componentTemplateInput.getText();
         String sass = sassTemplateInput.getText();
         String storybook = storybookTemplateInput.getText();
+        String spec = specTemplateInput.getText();
 
         options.setComponentTemplateFile(template);
         options.setSassTemplateFile(sass);
         options.setStorybookTemplateFile(storybook);
+        options.setSpecTemplateFile(spec);
     }
 }

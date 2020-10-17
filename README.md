@@ -35,6 +35,8 @@ __Structure__
 - my-module
   - my-module.vue
   - _my-module.scss
+  - _my-module.story.js
+  - _my-module.spec.js
 
 
 ## Vuex module
