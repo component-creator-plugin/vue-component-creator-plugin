@@ -1,3 +1,5 @@
+- 2.2.2: BugFix: Fix settings mapping. Rename story.js to stories.js 
+- 2.2.1: BugFix: Java Compilation Target missconfig
 - 2.2.0: Add .spec.js file to automatically create test files for your component
 - 2.1.0: Add optional creation of storybook and scss files for new vue components
 - 2.0.0: Add Settings

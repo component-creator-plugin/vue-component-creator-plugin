@@ -15,9 +15,11 @@ public class FileUtils {
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream resourceStream = classLoader.getResourceAsStream(filePath);
 
+        System.out.println(filePath);
+
         File tmpFile = new File(filePath);
         if (tmpFile.exists()) {
-            resourceStream = new FileInputStream(filePath);
+            resourceStream = new FileInputStream(tmpFile);
         }
 
         Scanner scanner = new Scanner(resourceStream);

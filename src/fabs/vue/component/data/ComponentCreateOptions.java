@@ -17,7 +17,7 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     private final String defaultComponentTemplateFile = "templates/component/{{componentName}}.vue.mustache";
     private final String defaultSassTemplateFile = "templates/component/_{{componentName}}.scss.mustache";
-    private final String defaultStorybookTemplateFile = "templates/component/{{componentName}}.story.js.mustache";
+    private final String defaultStorybookTemplateFile = "templates/component/{{componentName}}.stories.js.mustache";
     private final String defaultSpecTemplateFile = "templates/component/{{componentName}}.spec.js.mustache";
 
     private String componentTemplateFile = defaultComponentTemplateFile;
@@ -73,7 +73,7 @@ public class ComponentCreateOptions extends AbstractOptions {
         setComponentTemplateFile(element.getAttributeValue(COMPONENT_TEMPLATE_KEY));
         setSassTemplateFile(element.getAttributeValue(SASS_TEMPLATE_KEY));
         setStorybookTemplateFile(element.getAttributeValue(STORYBOOK_TEMPLATE_KEY));
-        setStorybookTemplateFile(element.getAttributeValue(SPEC_TEMPLATE_KEY));
+        setSpecTemplateFile(element.getAttributeValue(SPEC_TEMPLATE_KEY));
     }
 
     public boolean isComponentTemplateDefault() {
@@ -158,7 +158,7 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     public void setSpecTemplateFile(String specTemplateFile) {
         if (specTemplateFile == null || specTemplateFile.isEmpty()) {
-            this.specTemplateFile = defaultStorybookTemplateFile;
+            this.specTemplateFile = defaultSpecTemplateFile;
             return;
         }
         this.specTemplateFile = specTemplateFile;
