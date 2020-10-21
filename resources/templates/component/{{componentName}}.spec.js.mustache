@@ -1,9 +1,10 @@
-import { shallowMount } from '@vue/test-utils'
-import {{ componentNameCamelCase }} from './{{ componentName }}.vue'
+import { mount } from '@vue/test-utils';
+import {{ componentNameCamelCase }} from './{{ componentName }}';
 
-describe('Spec {{ componentName }}', function(){
+describe('Spec {{ componentName }}', function() {
     it('mounts', () => {
-        const wrapper = shallowMount({{ componentNameCamelCase }});
-        expect(wrapper).to.be.ok;
+        const wrapper = mount({{ componentNameCamelCase }});
+        expect(wrapper)
+            .toBeTruthy();
     });
 });
