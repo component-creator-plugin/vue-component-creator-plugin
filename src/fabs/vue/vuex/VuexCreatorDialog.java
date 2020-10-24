@@ -1,6 +1,6 @@
 package fabs.vue.vuex;
 
-import fabs.util.AbstractDialog;
+import io.fabs.util.AbstractDialog;
 import fabs.vue.vuex.data.VuexCreateOptions;
 
 import javax.swing.*;

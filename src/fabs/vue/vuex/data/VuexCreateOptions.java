@@ -1,11 +1,11 @@
 package fabs.vue.vuex.data;
 
-import fabs.util.AbstractOptions;
-import fabs.util.StringFormatter;
+import io.fabs.util.AbstractOptions;
+import io.fabs.util.StringFormatter;
+import io.fabs.util.TemplateUtils;
 import org.jdom.Element;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class VuexCreateOptions extends AbstractOptions {
@@ -73,9 +73,7 @@ public class VuexCreateOptions extends AbstractOptions {
 
     @Override
     public Map<String, Object> getTemplateVariables() {
-        Map<String, Object> templateModel = new HashMap<String, Object>();
-
-        templateModel.put("componentName", moduleName);
+        Map<String, Object> templateModel = TemplateUtils.createVariableMap(moduleName);
 
         templateModel.put("mutationsFile", mutationTypesFilePath);
         templateModel.put("property", propertyName);

@@ -1,11 +1,8 @@
-import {{ componentNameCamelCase }} from './{{componentName}}.vue';
+import {{ componentNamePascalCase }} from './{{componentName}}.vue';
 
-export default { title: '{{ componentName }}' };
+export default { title: '{{ componentNamePascalCase }}' };
 
 export const component = () => ({
-    components: { {{ componentNameCamelCase }} },
-    props: {
-
-    },
+    components: { {{ componentNamePascalCase }} },
     template: '<{{ componentName }} />',
 });

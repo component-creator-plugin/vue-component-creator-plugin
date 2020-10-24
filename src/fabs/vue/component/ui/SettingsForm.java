@@ -1,7 +1,7 @@
 package fabs.vue.component.ui;
 
-import fabs.util.AbstractSettingsForm;
 import fabs.vue.component.data.ComponentCreateOptions;
+import io.fabs.util.AbstractSettingsForm;
 
 import javax.swing.*;
 

@@ -1,8 +1,8 @@
 package fabs.vue.vuex.action;
 
 import com.intellij.openapi.project.Project;
-import fabs.util.AbstractCreatorAction;
-import fabs.util.AbstractDialog;
+import io.fabs.util.AbstractCreatorAction;
+import io.fabs.util.AbstractDialog;
 import fabs.vue.vuex.VuexCreatorDialog;
 import fabs.vue.vuex.data.VuexSettingsState;
 

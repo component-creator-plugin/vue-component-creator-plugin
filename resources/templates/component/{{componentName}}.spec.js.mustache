@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils';
-import {{ componentNameCamelCase }} from './{{ componentName }}';
+import {{ componentNamePascalCase }} from './{{ componentName }}';
 
-describe('Spec {{ componentName }}', function() {
+describe('Spec {{ componentNamePascalCase }}', function() {
     it('mounts', () => {
-        const wrapper = mount({{ componentNameCamelCase }});
+        const wrapper = mount(<{{ componentNamePascalCase }}/>);
         expect(wrapper)
             .toBeTruthy();
     });

@@ -1,8 +1,8 @@
 package fabs.vue.vuex.settings;
 
 import com.intellij.openapi.project.Project;
-import fabs.util.AbstractSettingsForm;
-import fabs.util.AbstractSettingsUI;
+import io.fabs.util.AbstractSettingsForm;
+import io.fabs.util.AbstractSettingsUI;
 import fabs.vue.vuex.data.VuexCreateOptions;
 import fabs.vue.vuex.data.VuexSettingsState;
 import fabs.vue.vuex.ui.VuexSettingsForm;

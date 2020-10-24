@@ -1,3 +1,8 @@
+- 2.3.0: Extract shared logic to library 
+    - Improve documentation.
+    - Add support for windows paths.
+    - Add variables for template customisation
+    - Improve default template contents
 - 2.2.2: BugFix: Fix settings mapping. Rename story.js to stories.js 
 - 2.2.1: BugFix: Java Compilation Target missconfig
 - 2.2.0: Add .spec.js file to automatically create test files for your component

@@ -1,11 +1,10 @@
 package fabs.vue.component.data;
 
-import fabs.util.AbstractOptions;
-import fabs.util.StringFormatter;
+import io.fabs.util.AbstractOptions;
+import io.fabs.util.TemplateUtils;
 import org.jdom.Element;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class ComponentCreateOptions extends AbstractOptions {
@@ -52,10 +51,7 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     @Override
     public Map<String, Object> getTemplateVariables() {
-        Map<String, Object> templateModel = new HashMap<>();
-        templateModel.put("componentName", componentName);
-        templateModel.put("componentNameCamelCase", StringFormatter.capitalizeFirst(StringFormatter.toCamelCase(componentName)));
-        return templateModel;
+        return TemplateUtils.createVariableMap(componentName);
     }
 
     @Override

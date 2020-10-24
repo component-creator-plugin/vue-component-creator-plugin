@@ -1,6 +1,6 @@
 package fabs.vue.vuex.ui;
 
-import fabs.util.AbstractSettingsForm;
+import io.fabs.util.AbstractSettingsForm;
 import fabs.vue.vuex.data.VuexCreateOptions;
 
 import javax.swing.*;
