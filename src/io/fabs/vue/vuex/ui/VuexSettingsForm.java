@@ -1,7 +1,7 @@
-package fabs.vue.vuex.ui;
+package io.fabs.vue.vuex.ui;
 
 import io.fabs.util.AbstractSettingsForm;
-import fabs.vue.vuex.data.VuexCreateOptions;
+import io.fabs.vue.vuex.data.VuexCreateOptions;
 
 import javax.swing.*;
 

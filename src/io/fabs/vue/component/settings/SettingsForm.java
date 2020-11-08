@@ -1,6 +1,6 @@
-package fabs.vue.component.ui;
+package io.fabs.vue.component.settings;
 
-import fabs.vue.component.data.ComponentCreateOptions;
+import io.fabs.vue.component.widget.ComponentCreateOptions;
 import io.fabs.util.AbstractSettingsForm;
 
 import javax.swing.*;
@@ -15,6 +15,8 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
     private JButton browseStorybookBtn;
     private JTextField specTemplateInput;
     private JButton specBrowseBtn;
+    private JTextField mdTemplateInput;
+    private JButton mdBrowseBtn;
 
     public SettingsForm(ComponentCreateOptions options) {
         super(options);
@@ -35,10 +37,15 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
             specTemplateInput.setText(options.getSpecTemplateFile());
         }
 
+        if (!options.isMDTemplateDefault()) {
+            mdTemplateInput.setText(options.getMdTemplateFile());
+        }
+
         componentBrowseBtn.addActionListener(e -> onBrowseButtonClicked(e, componentTemplateInput));
         browseSassBtn.addActionListener(e -> onBrowseButtonClicked(e, sassTemplateInput));
         browseStorybookBtn.addActionListener(e -> onBrowseButtonClicked(e, storybookTemplateInput));
         specBrowseBtn.addActionListener(e -> onBrowseButtonClicked(e, specTemplateInput));
+        mdBrowseBtn.addActionListener(e -> onBrowseButtonClicked(e, mdTemplateInput));
     }
 
     @Override
@@ -64,5 +71,6 @@ public class SettingsForm extends AbstractSettingsForm<ComponentCreateOptions> {
         options.setSassTemplateFile(sass);
         options.setStorybookTemplateFile(storybook);
         options.setSpecTemplateFile(spec);
+        options.setMdTemplateFile(mdTemplateInput.getText());
     }
 }

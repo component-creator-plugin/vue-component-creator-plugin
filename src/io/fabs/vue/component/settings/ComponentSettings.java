@@ -1,11 +1,10 @@
-package fabs.vue.component.settings;
+package io.fabs.vue.component.settings;
 
 import com.intellij.openapi.project.Project;
+import io.fabs.vue.component.ComponentSettingsState;
 import io.fabs.util.AbstractSettingsForm;
 import io.fabs.util.AbstractSettingsUI;
-import fabs.vue.component.data.ComponentCreateOptions;
-import fabs.vue.component.data.ComponentSettingsState;
-import fabs.vue.component.ui.SettingsForm;
+import io.fabs.vue.component.widget.ComponentCreateOptions;
 
 public class ComponentSettings extends AbstractSettingsUI<ComponentCreateOptions> {
 

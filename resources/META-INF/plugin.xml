@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.vuecomponentcreator</id>
     <name>Vue Component Creator</name>
-    <version>2.3.1</version>
+    <version>2.4.0</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <description>
@@ -57,15 +57,15 @@
     <change-notes>
         <![CDATA[
 <ul>
-<li>2.3.0: Extract shared logic to library
-<ul>
+<li>2.4.0: Add markdown file to component creation.</li>
+<li>2.3.0: Extract shared logic to library <ul>
 <li>Improve documentation.</li>
 <li>Add support for windows paths.</li>
 <li>Add variables for template customisation</li>
 <li>Improve default template contents</li>
 </ul>
 </li>
-<li>2.2.2: BugFix: Fix settings mapping. Rename story.js to stories.js</li>
+<li>2.2.2: BugFix: Fix settings mapping. Rename story.js to stories.js </li>
 <li>2.2.1: BugFix: Java Compilation Target missconfig</li>
 <li>2.2.0: Add .spec.js file to automatically create test files for your component</li>
 <li>2.1.0: Add optional creation of storybook and scss files for new vue components</li>
@@ -94,27 +94,24 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <projectService serviceInterface="fabs.vue.component.data.ComponentSettingsState"
-                        serviceImplementation="fabs.vue.component.data.ComponentSettingsState"/>
-
-        <projectService serviceInterface="fabs.vue.vuex.data.VuexSettingsState"
-                        serviceImplementation="fabs.vue.vuex.data.VuexSettingsState"/>
+        <projectService serviceImplementation="io.fabs.vue.component.ComponentSettingsState"/>
+        <projectService serviceImplementation="io.fabs.vue.vuex.data.VuexSettingsState"/>
 
         <projectConfigurable
-                instance="fabs.vue.component.settings.ComponentSettings"
+                instance="io.fabs.vue.component.settings.ComponentSettings"
                 id="vcc.settings"
                 displayName="Vue Component Creator"
                 nonDefaultProject="true"/>
 
         <projectConfigurable
-                instance="fabs.vue.component.settings.ComponentSettings"
+                instance="io.fabs.vue.component.settings.ComponentSettings"
                 id="vcc.settings.component"
                 parentId="vcc.settings"
                 displayName="Component"
                 nonDefaultProject="true"/>
 
         <projectConfigurable
-                instance="fabs.vue.vuex.settings.VuexSettings"
+                instance="io.fabs.vue.vuex.settings.VuexSettings"
                 id="vcc.settings.vuex"
                 parentId="vcc.settings"
                 displayName="Vuex Module"
@@ -125,14 +122,14 @@
         <group description="Vue" id="Vue">
             <separator/>
             <action id="VueComponent.ComponentCreatorAction"
-                    class="fabs.vue.component.action.ComponentCreatorAction"
+                    class="io.fabs.vue.component.widget.ComponentCreatorAction"
                     icon="/icons/component.png"
                     text="Vue Component"
                     description="Create Vue component">
             </action>
 
             <action id="VueComponent.VuexModuleCreatorAction"
-                    class="fabs.vue.vuex.action.VuexModuleCreatorAction"
+                    class="io.fabs.vue.vuex.action.VuexModuleCreatorAction"
                     icon="/icons/store.png"
                     text="Vuex Module"
                     description="Create new Vuex module">

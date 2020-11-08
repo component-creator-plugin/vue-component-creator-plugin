@@ -1,4 +1,4 @@
-package fabs.vue.vuex.data;
+package io.fabs.vue.vuex.data;
 
 
 import com.intellij.openapi.components.ServiceManager;

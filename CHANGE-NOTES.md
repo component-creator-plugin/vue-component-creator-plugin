@@ -1,3 +1,4 @@
+- 2.4.0: Add markdown file to component creation.
 - 2.3.0: Extract shared logic to library 
     - Improve documentation.
     - Add support for windows paths.
@@ -18,3 +19,5 @@
 - 0.5.0: Fix component creation if you cancel the modal
 - Auto open files in editor after creation
 - Update template
+
+
