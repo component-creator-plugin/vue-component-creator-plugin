@@ -19,3 +19,5 @@
 - 0.5.0: Fix component creation if you cancel the modal
 - Auto open files in editor after creation
 - Update template
+
+
