@@ -1,7 +1,6 @@
-package fabs.vue.component.ui;
+package io.fabs.vue.component.widget;
 
 import io.fabs.util.AbstractDialog;
-import fabs.vue.component.data.ComponentCreateOptions;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -13,6 +12,7 @@ public class ComponentCreatorDialog extends AbstractDialog<ComponentCreateOption
     private JCheckBox storybookFileCheckbox;
     private JCheckBox scssFileCheckbox;
     private JCheckBox specFileCheckbox;
+    private JCheckBox markdownCheckBox;
 
     public ComponentCreatorDialog(ComponentCreateOptions opt) {
         super(opt);
@@ -41,6 +41,7 @@ public class ComponentCreatorDialog extends AbstractDialog<ComponentCreateOption
         options.setCreateSassFile(scssFileCheckbox.isSelected());
         options.setCreateStorybookFile(storybookFileCheckbox.isSelected());
         options.setCreateSpecFile(specFileCheckbox.isSelected());
+        options.setCreateMDFile(markdownCheckBox.isSelected());
         return options;
     }
 }

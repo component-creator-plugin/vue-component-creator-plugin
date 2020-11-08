@@ -94,27 +94,24 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <projectService serviceInterface="fabs.vue.component.data.ComponentSettingsState"
-                        serviceImplementation="fabs.vue.component.data.ComponentSettingsState"/>
-
-        <projectService serviceInterface="fabs.vue.vuex.data.VuexSettingsState"
-                        serviceImplementation="fabs.vue.vuex.data.VuexSettingsState"/>
+        <projectService serviceImplementation="io.fabs.vue.component.ComponentSettingsState"/>
+        <projectService serviceImplementation="io.fabs.vue.vuex.data.VuexSettingsState"/>
 
         <projectConfigurable
-                instance="fabs.vue.component.settings.ComponentSettings"
+                instance="io.fabs.vue.component.settings.ComponentSettings"
                 id="vcc.settings"
                 displayName="Vue Component Creator"
                 nonDefaultProject="true"/>
 
         <projectConfigurable
-                instance="fabs.vue.component.settings.ComponentSettings"
+                instance="io.fabs.vue.component.settings.ComponentSettings"
                 id="vcc.settings.component"
                 parentId="vcc.settings"
                 displayName="Component"
                 nonDefaultProject="true"/>
 
         <projectConfigurable
-                instance="fabs.vue.vuex.settings.VuexSettings"
+                instance="io.fabs.vue.vuex.settings.VuexSettings"
                 id="vcc.settings.vuex"
                 parentId="vcc.settings"
                 displayName="Vuex Module"
@@ -125,14 +122,14 @@
         <group description="Vue" id="Vue">
             <separator/>
             <action id="VueComponent.ComponentCreatorAction"
-                    class="fabs.vue.component.action.ComponentCreatorAction"
+                    class="io.fabs.vue.component.widget.ComponentCreatorAction"
                     icon="/icons/component.png"
                     text="Vue Component"
                     description="Create Vue component">
             </action>
 
             <action id="VueComponent.VuexModuleCreatorAction"
-                    class="fabs.vue.vuex.action.VuexModuleCreatorAction"
+                    class="io.fabs.vue.vuex.action.VuexModuleCreatorAction"
                     icon="/icons/store.png"
                     text="Vuex Module"
                     description="Create new Vuex module">

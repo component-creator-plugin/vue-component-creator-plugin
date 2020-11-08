@@ -1,7 +1,7 @@
-package fabs.vue.vuex;
+package io.fabs.vue.vuex;
 
 import io.fabs.util.AbstractDialog;
-import fabs.vue.vuex.data.VuexCreateOptions;
+import io.fabs.vue.vuex.data.VuexCreateOptions;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

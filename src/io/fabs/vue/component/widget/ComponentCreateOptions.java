@@ -1,4 +1,4 @@
-package fabs.vue.component.data;
+package io.fabs.vue.component.widget;
 
 import io.fabs.util.AbstractOptions;
 import io.fabs.util.TemplateUtils;
@@ -13,20 +13,24 @@ public class ComponentCreateOptions extends AbstractOptions {
     public static final String SASS_TEMPLATE_KEY = "SASS_TEMPLATE_KEY";
     public static final String STORYBOOK_TEMPLATE_KEY = "STORYBOOK_TEMPLATE_KEY";
     public static final String SPEC_TEMPLATE_KEY = "SPEC_TEMPLATE_KEY";
+    public static final String MARKDOWN_TEMPLATE_KEY = "MARKDOWN_TEMPLATE_KEY";
 
-    private final String defaultComponentTemplateFile = "templates/component/{{componentName}}.vue.mustache";
-    private final String defaultSassTemplateFile = "templates/component/_{{componentName}}.scss.mustache";
-    private final String defaultStorybookTemplateFile = "templates/component/{{componentName}}.stories.js.mustache";
-    private final String defaultSpecTemplateFile = "templates/component/{{componentName}}.spec.js.mustache";
+    private final String defaultComponentTemplateFile = "templates/component/{{componentName}}.vue";
+    private final String defaultSassTemplateFile = "templates/component/_{{componentName}}.scss";
+    private final String defaultStorybookTemplateFile = "templates/component/{{componentName}}.stories.js";
+    private final String defaultSpecTemplateFile = "templates/component/{{componentName}}.spec.js";
+    private final String defaultMDTemplateFile = "templates/component/{{componentName}}.md";
 
     private String componentTemplateFile = defaultComponentTemplateFile;
     private String sassTemplateFile = defaultSassTemplateFile;
     private String storybookTemplateFile = defaultStorybookTemplateFile;
     private String specTemplateFile = defaultSpecTemplateFile;
+    private String mdTemplateFile = defaultMDTemplateFile;
 
     private boolean createSassFile = false;
     private boolean createStorybookFile = false;
     private boolean createSpecFile = false;
+    private boolean createMDFile = false;
 
     private String componentName;
 
@@ -46,6 +50,10 @@ public class ComponentCreateOptions extends AbstractOptions {
         if (createSpecFile) {
             files.add(specTemplateFile);
         }
+
+        if (createMDFile) {
+            files.add(mdTemplateFile);
+        }
         return files;
     }
 
@@ -57,10 +65,25 @@ public class ComponentCreateOptions extends AbstractOptions {
     @Override
     public Element serialize() {
         final Element element = new Element(STORE_KEY);
-        element.setAttribute(COMPONENT_TEMPLATE_KEY, componentTemplateFile);
-        element.setAttribute(SASS_TEMPLATE_KEY, sassTemplateFile);
-        element.setAttribute(STORYBOOK_TEMPLATE_KEY, storybookTemplateFile);
-        element.setAttribute(SPEC_TEMPLATE_KEY, specTemplateFile);
+        if (!isComponentTemplateDefault()) {
+            element.setAttribute(COMPONENT_TEMPLATE_KEY, componentTemplateFile);
+        }
+
+        if (!isSassTemplateDefault()) {
+            element.setAttribute(SASS_TEMPLATE_KEY, sassTemplateFile);
+        }
+
+        if (!isStorybookTemplateDefault()) {
+            element.setAttribute(STORYBOOK_TEMPLATE_KEY, storybookTemplateFile);
+        }
+
+        if (!isSpecTemplateDefault()) {
+            element.setAttribute(SPEC_TEMPLATE_KEY, specTemplateFile);
+        }
+
+        if (!isMDTemplateDefault()) {
+            element.setAttribute(MARKDOWN_TEMPLATE_KEY, mdTemplateFile);
+        }
         return element;
     }
 
@@ -70,6 +93,7 @@ public class ComponentCreateOptions extends AbstractOptions {
         setSassTemplateFile(element.getAttributeValue(SASS_TEMPLATE_KEY));
         setStorybookTemplateFile(element.getAttributeValue(STORYBOOK_TEMPLATE_KEY));
         setSpecTemplateFile(element.getAttributeValue(SPEC_TEMPLATE_KEY));
+        setMdTemplateFile(element.getAttributeValue(MARKDOWN_TEMPLATE_KEY));
     }
 
     public boolean isComponentTemplateDefault() {
@@ -86,6 +110,10 @@ public class ComponentCreateOptions extends AbstractOptions {
 
     public boolean isSpecTemplateDefault() {
         return defaultSpecTemplateFile.equals(specTemplateFile);
+    }
+
+    public boolean isMDTemplateDefault() {
+        return defaultMDTemplateFile.equals(mdTemplateFile);
     }
 
     public String getComponentName() {
@@ -132,16 +160,8 @@ public class ComponentCreateOptions extends AbstractOptions {
         this.storybookTemplateFile = storybookTemplateFile;
     }
 
-    public boolean isCreateSassFile() {
-        return createSassFile;
-    }
-
     public void setCreateSassFile(boolean createSassFile) {
         this.createSassFile = createSassFile;
-    }
-
-    public boolean isCreateStorybookFile() {
-        return createStorybookFile;
     }
 
     public void setCreateStorybookFile(boolean createStorybookFile) {
@@ -160,12 +180,24 @@ public class ComponentCreateOptions extends AbstractOptions {
         this.specTemplateFile = specTemplateFile;
     }
 
-    public boolean isCreateSpecFile() {
-        return createSpecFile;
+    public String getMdTemplateFile() {
+        return mdTemplateFile;
+    }
+
+    public void setMdTemplateFile(String file) {
+        if (file == null || file.isEmpty()) {
+            mdTemplateFile = defaultMDTemplateFile;
+            return;
+        }
+        mdTemplateFile = file;
     }
 
     public void setCreateSpecFile(boolean createSpecFile) {
         this.createSpecFile = createSpecFile;
+    }
+
+    public void setCreateMDFile(boolean createMDFile) {
+        this.createMDFile = createMDFile;
     }
 
     public boolean equals(ComponentCreateOptions options) {
@@ -173,6 +205,7 @@ public class ComponentCreateOptions extends AbstractOptions {
                 && options.getStorybookTemplateFile().equals(storybookTemplateFile)
                 && options.getSassTemplateFile().equals(sassTemplateFile)
                 && options.getSpecTemplateFile().equals(specTemplateFile)
+                && options.getMdTemplateFile().equals(mdTemplateFile)
         );
     }
 }

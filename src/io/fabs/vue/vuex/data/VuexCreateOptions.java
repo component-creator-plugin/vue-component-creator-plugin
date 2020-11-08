@@ -1,4 +1,4 @@
-package fabs.vue.vuex.data;
+package io.fabs.vue.vuex.data;
 
 import io.fabs.util.AbstractOptions;
 import io.fabs.util.StringFormatter;

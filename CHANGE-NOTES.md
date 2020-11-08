@@ -1,3 +1,4 @@
+- 2.4.0: Add markdown file to component creation.
 - 2.3.0: Extract shared logic to library 
     - Improve documentation.
     - Add support for windows paths.
