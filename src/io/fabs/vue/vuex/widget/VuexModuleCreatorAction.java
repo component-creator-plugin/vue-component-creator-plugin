@@ -1,10 +1,10 @@
-package io.fabs.vue.vuex.action;
+package io.fabs.vue.vuex.widget;
 
 import com.intellij.openapi.project.Project;
 import io.fabs.util.AbstractCreatorAction;
 import io.fabs.util.AbstractDialog;
-import io.fabs.vue.vuex.VuexCreatorDialog;
-import io.fabs.vue.vuex.data.VuexSettingsState;
+import io.fabs.vue.vuex.widget.VuexCreatorDialog;
+import io.fabs.vue.vuex.VuexSettingsState;
 
 public class VuexModuleCreatorAction extends AbstractCreatorAction {
 

@@ -1,4 +1,4 @@
-package io.fabs.vue.vuex.data;
+package io.fabs.vue.vuex;
 
 
 import com.intellij.openapi.components.ServiceManager;
@@ -6,6 +6,7 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.project.Project;
 import io.fabs.util.AbstractPersistentState;
+import io.fabs.vue.vuex.widget.VuexCreateOptions;
 
 @State(
         name = "VuexSettings",

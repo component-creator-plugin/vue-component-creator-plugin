@@ -1,4 +1,4 @@
-package io.fabs.vue.vuex.data;
+package io.fabs.vue.vuex.widget;
 
 import io.fabs.util.AbstractOptions;
 import io.fabs.util.StringFormatter;
@@ -19,13 +19,13 @@ public class VuexCreateOptions extends AbstractOptions {
     private final String STATE_FILE_KEY = "STATE_FILE_KEY";
     private final String TYPES_FILE_KEY = "TYPES_FILE_KEY";
 
-    private final String defaultActionFile = "templates/vuex/actions.js.mustache";
-    private final String defaultIndexFile = "templates/vuex/index.js.mustache";
-    private final String defaultGettersFile = "templates/vuex/getters.js.mustache";
-    private final String defaultMutationsFile = "templates/vuex/mutations.js.mustache";
-    private final String defaultMutationTypesFile = "templates/vuex/mutation-types.js.mustache";
-    private final String defaultStateFile = "templates/vuex/state.js.mustache";
-    private final String defaultTypesFile = "templates/vuex/types.d.ts.mustache";
+    private final String defaultActionFile = "templates/vuex/actions.js";
+    private final String defaultIndexFile = "templates/vuex/index.js";
+    private final String defaultGettersFile = "templates/vuex/getters.js";
+    private final String defaultMutationsFile = "templates/vuex/mutations.js";
+    private final String defaultMutationTypesFile = "templates/vuex/mutation-types.js";
+    private final String defaultStateFile = "templates/vuex/state.js";
+    private final String defaultTypesFile = "templates/vuex/types.d.ts";
 
     private String actionFile = defaultActionFile;
     private String indexFile = defaultIndexFile;
