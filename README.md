@@ -25,11 +25,12 @@ with the given name.
 
 __Structure__
 
-- my-module
-  - my-module.vue
-  - _my-module.scss
-  - _my-module.story.js
-  - _my-module.spec.js
+- componentName
+  - _component-name.scss
+  - component-name.md
+  - component-name.vue
+  - component-name.stories.js
+  - component-name.spec.js
 
 
 ## Vuex module
@@ -39,7 +40,7 @@ By creating a new Vuex module, a couple of files will be generated.
 
 __Structure__
 
-- name
+- moduleName
     - actions.js
     - index.js
     - mutations.js
@@ -53,7 +54,7 @@ __Structure__
 ## Customize Templates
 ### Component
 
-Available variables
+Available template variables
 
 Variable | Example | Description
 ---|---|---
@@ -61,40 +62,9 @@ componentName | `my-module` | Name of the component
 componentNameCamelCase | `myModule` | Name of the component in camelCase
 componentNamePascalCase | `MyModule` | Name of the component in camelCase
 
-####  {{componentName}}.vue.mustache
-    <template>
-        <div class="{{ componentName }}">
-            <pre v-text="$attrs"/>
-        </div>
-    </template>
-    
-    <script>
-        export default {
-            props: {
-            },
-        };
-    </script>
-
-
-
-####  _{{componentName}}.scss.mustache
-    .{{ componentName }} {
-        // Vars
-    
-        // Support
-    
-        // Module
-        & {
-            //
-        }
-    
-        // Facets
-    
-        // States
-    }
 
 ### Vuex
-Available variables
+Available template variables
 
 Variable | Type | Description
 ---|---|---
@@ -113,94 +83,6 @@ mutationName | `string` | Name of the mutation type
 tsInterfaceName | `string` | Name of the TypeScript State interface name
 
 
-#### actions.js.mustache
-
-    import { {{ mutationName }} } from '{{ mutationsFile }}';
-    
-    /**
-    *
-    * @param { function } commit
-    * @param { {{propertyType}} } {{property}}
-    */
-    export function {{ actionName }}({ commit }, { {{ property }} }) {
-        commit({{ mutationName }}, { {{ property }} });
-    }
-
-#### getters.js.mustache
-
-    /**
-    *
-    * {{# useInterface }}
-    * @param { {{tsInterfaceName}} } state
-    {{/ useInterface }}
-     {{ ^useInterface }}
-    * @param { {{object}} } state
-    {{/ useInterface }}
-    * @return { {{ propertyType }} }
-    */
-    export function {{getterName}}(state) {
-        return state.{{ property }};
-    }
-
-#### index.js.mustache
-
-    import * as actions from './actions';
-    import mutations from './mutations';
-    {{# getters }}
-    import * as getters from './getters';
-    {{/ getters }}
-    import state from './state';
-    
-    export default {
-        namespaced: true,
-        mutations,
-        actions,
-        state,
-        {{# getters }}
-        getters,
-        {{/ getters }}
-    };
-
-#### mutation-types.js.mustache
-
-    export const { {{ mutationName }} } = '{{ componentName }}/{{ mutationName }}';
-
-#### mutations.js.mustache
-
-    import { {{ mutationName }} } from '{{ mutationsFile }}';
-    
-    export default {
-        /**
-        *
-        {{# useInterface }}
-        * @param { {{tsInterfaceName}} } state
-        {{/ useInterface }}
-         {{ ^useInterface }}
-        * @param { object } state
-        {{/ useInterface }}
-        * @param { {{propertyType}} } {{property}}
-        */
-        [{{ mutationName }}](state, { {{ property }} }) {
-            state.{{ property }} = {{ property }};
-        },
-    };
-
-#### state.js.mustache
-
-    {{# useInterface }}
-    /** @var { {{tsInterfaceName}} } */
-    {{/ useInterface }}
-    const STATE = {
-        {{ property }}: null,
-    };
-    
-    export default STATE;
-
-#### types.d.ts.mustache
-
-    export interface {{ tsInterfaceName }} {
-        {{ property }}: {{ propertyType }};
-    }
 
 ## Development
 Checkout the [Development Setup Guide](./doc/DEVELOPMENT.md) for the setup.
