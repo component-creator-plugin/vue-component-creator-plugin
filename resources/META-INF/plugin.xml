@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.faebeee.vuecomponentcreator</id>
     <name>Vue Component Creator</name>
-    <version>2.4.1</version>
+    <version>2.5.0</version>
     <vendor email="faebeee@gmail.com" url="http://fabs.io">Fabio Gianini</vendor>
 
     <description>
@@ -57,6 +57,7 @@
     <change-notes>
         <![CDATA[
 <ul>
+<li>2.5.0: Improve storybook template</li>
 <li>2.4.1: Bugfix: Fix export of mutation type constance</li>
 <li>2.4.0: Add markdown file to component creation.</li>
 <li>2.3.0: Extract shared logic to library <ul>
