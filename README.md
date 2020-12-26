@@ -61,26 +61,27 @@ Variable | Example | Description
 componentName | `my-module` | Name of the component
 componentNameCamelCase | `myModule` | Name of the component in camelCase
 componentNamePascalCase | `MyModule` | Name of the component in camelCase
+createMarkdown | `0`/`1` | Whether the markdown file is created or not
 
 
 ### Vuex
 Available template variables
 
-Variable | Type | Description
+Variable | Example | Description
 ---|---|---
 componentName | `my-module` | Name of the component
 componentNameCamelCase | `myModule` | Name of the component in camelCase
 componentNamePascalCase | `MyModule` | Name of the component in camelCase
-mutationsFile | `string` | Filepath to the mutations
-property | `string` | Name of the property to be created
-getterName | `string` | Getter function name
+mutationsFile | `./mutation-types.js` | Filepath to the mutations
+property | `data` | Name of the property to be created
+getterName | `getData` | Getter function name
 propertyType | `string` | Type of the property
-getters | `boolean` | Create getters
-useInterface | `boolean` | Create a typescript file with type definitions
-createMutationTypes | `boolean` | Wether to create a custom mutation types file
-actionName | `string` | Name of the action
-mutationName | `string` | Name of the mutation type
-tsInterfaceName | `string` | Name of the TypeScript State interface name
+getters | `0`/`1` | Create getters
+useInterface | `0`/`1` | Create a typescript file with type definitions
+createMutationTypes | `0`/`1` | Whether to create a custom mutation types file
+actionName | `setData` | Name of the action
+mutationName | `SET_DATA` | Name of the mutation type
+tsInterfaceName | `MyModuleState` | Name of the TypeScript State interface name
 
 
 

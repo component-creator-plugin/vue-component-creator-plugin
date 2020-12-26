@@ -1,3 +1,4 @@
 # {{componentNamePascalCase}}
 
+## Usage
     <{{ componentName }} />

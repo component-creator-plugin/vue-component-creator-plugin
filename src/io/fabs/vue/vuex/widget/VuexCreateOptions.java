@@ -72,17 +72,17 @@ public class VuexCreateOptions extends AbstractOptions {
     }
 
     @Override
-    public Map<String, Object> getTemplateVariables() {
-        Map<String, Object> templateModel = TemplateUtils.createVariableMap(moduleName);
+    public Map<String, String> getTemplateVariables() {
+        Map<String, String> templateModel = TemplateUtils.createVariableMap(moduleName);
 
         templateModel.put("mutationsFile", mutationTypesFilePath);
         templateModel.put("property", propertyName);
         templateModel.put("getterName", getterName);
         templateModel.put("propertyType", propertyType);
 
-        templateModel.put("getters", isCreateGetters);
-        templateModel.put("useInterface", isCreateTypes);
-        templateModel.put("createMutationTypes", isCreateMutationTypes);
+        templateModel.put("getters", isCreateGetters ? "1" : "0");
+        templateModel.put("useInterface", isCreateTypes ? "1" : "0");
+        templateModel.put("createMutationTypes", isCreateMutationTypes ? "1" : "0");
 
         templateModel.put("actionName", "set".concat(StringFormatter.capitalizeFirst(propertyName)));
         templateModel.put("mutationName", "SET_".concat(propertyName.toUpperCase()));

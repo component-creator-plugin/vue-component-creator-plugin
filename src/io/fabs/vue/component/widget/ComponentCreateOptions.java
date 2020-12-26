@@ -58,8 +58,10 @@ public class ComponentCreateOptions extends AbstractOptions {
     }
 
     @Override
-    public Map<String, Object> getTemplateVariables() {
-        return TemplateUtils.createVariableMap(componentName);
+    public Map<String, String> getTemplateVariables() {
+        Map<String, String> map = TemplateUtils.createVariableMap(componentName);
+        map.put("createMarkdown", createMDFile ? "1" : "0");
+        return map;
     }
 
     @Override

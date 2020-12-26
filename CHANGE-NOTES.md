@@ -1,3 +1,4 @@
+- 2.6.0: Improve storybook template. Improve Exception details
 - 2.5.0: Improve storybook template
 - 2.4.0: Add markdown file to component creation.
 - 2.3.0: Extract shared logic to library 

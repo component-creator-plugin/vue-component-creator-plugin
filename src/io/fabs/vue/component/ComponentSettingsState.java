@@ -4,8 +4,8 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.project.Project;
+import io.fabs.util.settings.AbstractPersistentState;
 import io.fabs.vue.component.widget.ComponentCreateOptions;
-import io.fabs.util.AbstractPersistentState;
 
 @State(
         name = "ComponentSettings",

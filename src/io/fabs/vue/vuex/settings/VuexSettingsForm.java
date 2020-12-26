@@ -1,6 +1,6 @@
 package io.fabs.vue.vuex.settings;
 
-import io.fabs.util.AbstractSettingsForm;
+import io.fabs.util.settings.AbstractSettingsForm;
 import io.fabs.vue.vuex.widget.VuexCreateOptions;
 
 import javax.swing.*;
