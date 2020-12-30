@@ -1,20 +1,19 @@
 import {{ componentNamePascalCase }} from './{{componentName}}.vue';
-{{# createMarkdown }}
+{{# createMarkdown = "1" }}
 import markdown from './{{componentName}}.md';
-{{/ createMarkdown }}
+{{/ createMarkdown = "1"}}
 
 export default {
     title: '{{ componentNamePascalCase }}',
     component: {{ componentNamePascalCase }},
-    argTypes: {},
-    {{# createMarkdown }}
+    {{# createMarkdown = "1" }}
     parameters: {
         notes: { markdown }
     },
-    {{/ createMarkdown }}
+    {{/ createMarkdown = "1" }}
 };
 
-export const component = (args, {argTypes}) => ({
+export const Default = (args, {argTypes}) => ({
     props: Object.keys(argTypes),
     components: { {{ componentNamePascalCase }} },
     template: `<{{ componentName }} v-bind="$props" />`,

@@ -1,3 +1,4 @@
+- 2.7.1: Fix markdown include in story
 - 2.7.0: Improve storybook template. Improve Exception details
 - 2.5.0: Improve storybook template
 - 2.4.0: Add markdown file to component creation.
