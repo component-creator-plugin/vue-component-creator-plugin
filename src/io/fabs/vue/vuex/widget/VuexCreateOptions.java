@@ -19,13 +19,14 @@ public class VuexCreateOptions extends AbstractOptions {
     private final String STATE_FILE_KEY = "STATE_FILE_KEY";
     private final String TYPES_FILE_KEY = "TYPES_FILE_KEY";
 
-    private final String defaultActionFile = "templates/vuex/actions.js";
-    private final String defaultIndexFile = "templates/vuex/index.js";
-    private final String defaultGettersFile = "templates/vuex/getters.js";
-    private final String defaultMutationsFile = "templates/vuex/mutations.js";
-    private final String defaultMutationTypesFile = "templates/vuex/mutation-types.js";
-    private final String defaultStateFile = "templates/vuex/state.js";
-    private final String defaultTypesFile = "templates/vuex/types.d.ts";
+
+    private final String defaultActionFile = "/templates/vuex/actions.js";
+    private final String defaultIndexFile = "/templates/vuex/index.js";
+    private final String defaultGettersFile = "/templates/vuex/getters.js";
+    private final String defaultMutationsFile = "/templates/vuex/mutations.js";
+    private final String defaultMutationTypesFile = "/templates/vuex/mutation-types.js";
+    private final String defaultStateFile = "/templates/vuex/state.js";
+    private final String defaultTypesFile = "/templates/vuex/types.d.ts";
 
     private String actionFile = defaultActionFile;
     private String indexFile = defaultIndexFile;
