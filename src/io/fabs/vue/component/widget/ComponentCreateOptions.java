@@ -15,11 +15,11 @@ public class ComponentCreateOptions extends AbstractOptions {
     public static final String SPEC_TEMPLATE_KEY = "SPEC_TEMPLATE_KEY";
     public static final String MARKDOWN_TEMPLATE_KEY = "MARKDOWN_TEMPLATE_KEY";
 
-    private final String defaultComponentTemplateFile = "templates/component/{{componentName}}.vue";
-    private final String defaultSassTemplateFile = "templates/component/_{{componentName}}.scss";
-    private final String defaultStorybookTemplateFile = "templates/component/{{componentName}}.stories.js";
-    private final String defaultSpecTemplateFile = "templates/component/{{componentName}}.spec.js";
-    private final String defaultMDTemplateFile = "templates/component/{{componentName}}.md";
+    private final String defaultComponentTemplateFile = "/templates/component/{{componentName}}.vue";
+    private final String defaultSassTemplateFile = "/templates/component/_{{componentName}}.scss";
+    private final String defaultStorybookTemplateFile = "/templates/component/{{componentName}}.stories.js";
+    private final String defaultSpecTemplateFile = "/templates/component/{{componentName}}.spec.js";
+    private final String defaultMDTemplateFile = "/templates/component/{{componentName}}.md";
 
     private String componentTemplateFile = defaultComponentTemplateFile;
     private String sassTemplateFile = defaultSassTemplateFile;
